@@ -1034,15 +1034,11 @@ footer p{
 
 <div class="container">
 
-<!-- =====================================================
-     DEFAULT DATA
-     
-     Data ini hanya cadangan.
-     Kalau ADMIN sudah menyimpan data,
-     data ADMIN akan otomatis dipakai.
-===================================================== -->
-
 <script>
+
+/* =====================================================
+   DEFAULT DATA
+===================================================== */
 
 const DEFAULT_DATA = {
 
@@ -1106,52 +1102,197 @@ const DEFAULT_DATA = {
 
 
 /* =====================================================
-   AMBIL DATA DARI ADMIN
+   FUNGSI DECODE DATA DARI LINK
 ===================================================== */
 
-let DATA = DEFAULT_DATA;
+function ambilDataDariLink(){
 
-try{
+  try{
 
-  const dataTersimpan =
-    localStorage.getItem("DATA_UNDANGAN");
+    const hash =
+      window.location.hash;
 
-  if(dataTersimpan){
+    if(!hash){
 
-    const dataAdmin =
-      JSON.parse(dataTersimpan);
+      return null;
 
-    DATA = {
-      ...DEFAULT_DATA,
-      ...dataAdmin
-    };
+    }
+
+    if(
+      !hash.startsWith("#data=")
+    ){
+
+      return null;
+
+    }
+
+    const encoded =
+      hash.substring(6);
+
+    if(!encoded){
+
+      return null;
+
+    }
+
+    const json =
+      decodeURIComponent(encoded);
+
+    const data =
+      JSON.parse(json);
+
+    if(
+      !data ||
+      typeof data !== "object"
+    ){
+
+      return null;
+
+    }
+
+    return data;
 
   }
 
-}catch(error){
+  catch(error){
 
-  console.log(
-    "Data Admin belum tersedia."
-  );
+    console.log(
+      "Data link tidak dapat dibaca:",
+      error
+    );
+
+    return null;
+
+  }
 
 }
 
 
 /* =====================================================
-   FORMAT TANGGAL DARI ADMIN
+   AMBIL DATA
+   PRIORITAS:
+
+   1. DATA DARI LINK
+   2. DATA ADMIN DI HP
+   3. DEFAULT
+===================================================== */
+
+let DATA = {
+  ...DEFAULT_DATA
+};
+
+
+/* DATA DARI LINK */
+
+const dataDariLink =
+  ambilDataDariLink();
+
+
+if(dataDariLink){
+
+  DATA = {
+    ...DEFAULT_DATA,
+    ...dataDariLink
+  };
+
+}
+
+
+/* KALAU TIDAK ADA LINK,
+   GUNAKAN DATA ADMIN */
+
+else{
+
+  try{
+
+    const dataTersimpan =
+      localStorage.getItem(
+        "DATA_UNDANGAN"
+      );
+
+    if(dataTersimpan){
+
+      const dataAdmin =
+        JSON.parse(
+          dataTersimpan
+        );
+
+      DATA = {
+
+        ...DEFAULT_DATA,
+
+        ...dataAdmin
+
+      };
+
+    }
+
+  }
+
+  catch(error){
+
+    console.log(
+      "Data Admin belum tersedia."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   SIMPAN DATA LINK KE LOCAL STORAGE
+   Supaya setelah link dibuka,
+   data tetap tersimpan di browser.
+===================================================== */
+
+if(dataDariLink){
+
+  try{
+
+    localStorage.setItem(
+      "DATA_UNDANGAN",
+      JSON.stringify(DATA)
+    );
+
+  }
+
+  catch(error){
+
+    console.log(
+      "Tidak dapat menyimpan data."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   FORMAT TANGGAL
 ===================================================== */
 
 function formatTanggalIndonesia(value){
 
   if(!value){
+
     return DEFAULT_DATA.tanggal;
+
   }
 
   const date =
-    new Date(value + "T00:00:00");
+    new Date(
+      value + "T00:00:00"
+    );
 
-  if(isNaN(date.getTime())){
+  if(
+    isNaN(
+      date.getTime()
+    )
+  ){
+
     return value;
+
   }
 
   const bulan = [
@@ -1185,7 +1326,7 @@ function formatTanggalIndonesia(value){
 
 
 /* =====================================================
-   BUAT DATA TANGGAL
+   JIKA TANGGAL DARI ADMIN MASIH FORMAT ISO
 ===================================================== */
 
 if(DATA.tanggal){
@@ -1210,19 +1351,23 @@ if(DATA.tanggal){
 ===================================================== */
 
 if(
-  DATA.tanggal &&
-  DATA.tanggal.includes("-")
+  DATA.tanggalISO
 ){
 
   const parts =
-    DATA.tanggal.split("-");
+    DATA.tanggalISO.split("-");
 
-  DATA.tanggalSingkat =
-    parts[2] +
-    " • " +
-    parts[1] +
-    " • " +
-    parts[0];
+  if(parts.length === 3){
+
+    DATA.tanggalSingkat =
+
+      parts[2] +
+      " • " +
+      parts[1] +
+      " • " +
+      parts[0];
+
+  }
 
 }
 
@@ -1233,8 +1378,20 @@ if(
 
 if(DATA.jam){
 
-  const jam =
-    DATA.jam.replace(":", ".");
+  let jam =
+    DATA.jam
+      .replace(" WIB","")
+      .replace("WIB","")
+      .trim();
+
+  if(
+    jam.includes(":")
+  ){
+
+    jam =
+      jam.replace(":", ".");
+
+  }
 
   DATA.jamAkad =
     jam +
@@ -1252,14 +1409,23 @@ if(DATA.jam){
 ===================================================== */
 
 if(
-  DATA.tanggal &&
-  DATA.tanggal.includes("-")
+  DATA.tanggalISO
 ){
 
+  let jamCountdown =
+    DATA.jam || "09:00";
+
+  jamCountdown =
+    jamCountdown
+      .replace(" WIB","")
+      .replace("WIB","")
+      .trim()
+      .replace(".",":");
+
   DATA.countdown =
-    DATA.tanggal +
+    DATA.tanggalISO +
     "T" +
-    (DATA.jam || "09:00") +
+    jamCountdown +
     ":00+07:00";
 
 }
@@ -1844,7 +2010,7 @@ if(
 <script>
 
 /* =====================================================
-   URL GITHUB
+   GITHUB
 ===================================================== */
 
 const GITHUB_BASE =
@@ -1855,14 +2021,17 @@ const GITHUB_BASE =
 
 
 /* =====================================================
-   FUNGSI FOTO
+   FOTO / MUSIK
 ===================================================== */
 
 function fotoURL(namaFile){
 
   if(!namaFile){
+
     return "";
+
   }
+
 
   if(
     namaFile.startsWith("http://") ||
@@ -1873,16 +2042,19 @@ function fotoURL(namaFile){
 
   }
 
+
   return (
+
     GITHUB_BASE +
     encodeURIComponent(namaFile)
+
   );
 
 }
 
 
 /* =====================================================
-   SET BACKGROUND COVER
+   COVER
 ===================================================== */
 
 if(DATA.fotoCover){
@@ -1901,15 +2073,20 @@ if(DATA.fotoCover){
 
 
 /* =====================================================
-   NAMA
+   TITLE
 ===================================================== */
 
 document.title =
+
   "The Wedding Of " +
   DATA.pria +
   " & " +
   DATA.wanita;
 
+
+/* =====================================================
+   NAMA
+===================================================== */
 
 document.getElementById(
   "coverNames"
@@ -2174,6 +2351,7 @@ function countdown(){
       "seconds"
     ).innerText = "0";
 
+
     return;
 
   }
@@ -2328,7 +2506,9 @@ if(DATA.musik){
 function openInvitation(){
 
   if(!DATA.musik){
+
     return;
+
   }
 
 
@@ -2486,28 +2666,68 @@ function sendRSVP(event){
 
 function copyAccount(){
 
-  navigator.clipboard
-    .writeText(
-      DATA.rekening
-    )
+  if(!DATA.rekening){
 
-    .then(
-
-      function(){
-
-        alert(
-          "Nomor rekening berhasil disalin."
-        );
-
-      }
-
+    alert(
+      "Nomor rekening belum tersedia."
     );
+
+    return;
+
+  }
+
+
+  if(
+    navigator.clipboard &&
+    navigator.clipboard.writeText
+  ){
+
+    navigator.clipboard
+      .writeText(
+        DATA.rekening
+      )
+
+      .then(
+
+        function(){
+
+          alert(
+            "Nomor rekening berhasil disalin."
+          );
+
+        }
+
+      )
+
+      .catch(
+
+        function(){
+
+          alert(
+            "Nomor rekening: " +
+            DATA.rekening
+          );
+
+        }
+
+      );
+
+  }
+
+  else{
+
+    alert(
+      "Nomor rekening: " +
+      DATA.rekening
+    );
+
+  }
 
 }
 
 
 /* =====================================================
-   BINTANG JATUH
+   BINTANG
 ===================================================== */
 
 function createStar(){
