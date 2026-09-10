@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Undangan Digital</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#111;
+  color:#fff;
+}
+
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:20px;
+}
+
+h1{
+  text-align:center;
+  color:#d4af37;
+  margin-bottom:5px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#aaa;
+  margin-bottom:25px;
+}
+
+.card{
+  background:#1b1b1b;
+  border:1px solid #333;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+h2{
+  color:#d4af37;
+  font-size:18px;
+  margin-top:0;
+}
+
+label{
+  display:block;
+  margin-top:15px;
+  margin-bottom:6px;
+  color:#ddd;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:13px;
+  border-radius:8px;
+  border:1px solid #444;
+  background:#292929;
+  color:#fff;
+  font-size:15px;
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:10px;
+  background:#d4af37;
+  color:#111;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+button:active{
+  transform:scale(.98);
+}
+
+.saved{
+  display:none;
+  background:#123d25;
+  border:1px solid #2d8a50;
+  padding:15px;
+  border-radius:10px;
+  margin-top:15px;
+  color:#b9ffd0;
+}
+
+.clear{
+  background:#8b2525;
+  color:#fff;
+}
+
+.preview{
+  background:#151515;
+  border-radius:10px;
+  padding:15px;
+  margin-top:15px;
+  line-height:1.8;
+  color:#ddd;
+}
+
+.gold{
+  color:#d4af37;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>ADMIN UNDANGAN</h1>
+  <div class="subtitle">
+    Data Pelanggan
+  </div>
+
+  <div class="card">
+
+    <h2>💍 Data Pengantin</h2>
+
+    <label>Nama Pengantin Pria</label>
+    <input id="pria" type="text" placeholder="Contoh: Febriyanda">
+
+    <label>Nama Pengantin Wanita</label>
+    <input id="wanita" type="text" placeholder="Contoh: Zaida Amala">
+
+    <label>Tanggal Pernikahan</label>
+    <input id="tanggal" type="date">
+
+    <label>Jam Acara</label>
+    <input id="jam" type="time">
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📍 Lokasi Acara</h2>
+
+    <label>Nama Lokasi</label>
+    <input id="lokasi" type="text" placeholder="Contoh: Simpang Uning Niken">
+
+    <label>Alamat</label>
+    <textarea id="alamat" placeholder="Contoh: Kecamatan Bies, Aceh Tengah, Aceh"></textarea>
+
+    <label>Link Google Maps</label>
+    <input id="maps" type="url" placeholder="https://maps.google.com/...">
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>👨‍👩‍👧 Orang Tua</h2>
+
+    <label>Orang Tua Pengantin Pria</label>
+    <input id="orangTuaPria" type="text"
+           placeholder="Putra dari Bapak ... & Ibu ...">
+
+    <label>Orang Tua Pengantin Wanita</label>
+    <input id="orangTuaWanita" type="text"
+           placeholder="Putri dari Bapak ... & Ibu ...">
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📱 RSVP</h2>
+
+    <label>Nomor WhatsApp</label>
+    <input id="whatsapp" type="tel"
+           placeholder="Contoh: 6281234567890">
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🏦 Wedding Gift</h2>
+
+    <label>Nama Bank</label>
+    <input id="bank" type="text"
+           placeholder="Contoh: Bank BCA">
+
+    <label>Nomor Rekening</label>
+    <input id="rekening" type="text"
+           placeholder="Contoh: 1234567890">
+
+    <label>Nama Pemilik Rekening</label>
+    <input id="pemilikRekening" type="text"
+           placeholder="Contoh: Febriyanda">
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🖼️ Foto & Musik</h2>
+
+    <label>Nama File Foto Cover</label>
+    <input id="fotoCover" type="text"
+           placeholder="Contoh: cover.jpg">
+
+    <label>Nama File Foto Pria</label>
+    <input id="fotoPria" type="text"
+           placeholder="Contoh: pria.jpg">
+
+    <label>Nama File Foto Wanita</label>
+    <input id="fotoWanita" type="text"
+           placeholder="Contoh: wanita.jpg">
+
+    <label>Nama File Foto 1</label>
+    <input id="foto1" type="text"
+           placeholder="Contoh: foto1.jpg">
+
+    <label>Nama File Foto 2</label>
+    <input id="foto2" type="text"
+           placeholder="Contoh: foto2.jpg">
+
+    <label>Nama File Foto 3</label>
+    <input id="foto3" type="text"
+           placeholder="Contoh: foto3.jpg">
+
+    <label>Nama File Foto 4</label>
+    <input id="foto4" type="text"
+           placeholder="Contoh: foto4.jpg">
+
+    <label>Nama File Musik</label>
+    <input id="musik" type="text"
+           placeholder="Contoh: musik.mp3">
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>💌 Pesan Pembuka</h2>
+
+    <textarea id="pesan"
+      placeholder="Contoh: Dengan penuh kebahagiaan kami mengundang..."></textarea>
+
+  </div>
+
+
+  <button onclick="simpanData()">
+    💾 SIMPAN DATA PELANGGAN
+  </button>
+
+  <div id="saved" class="saved">
+    ✅ Data pelanggan berhasil disimpan di HP.
+  </div>
+
+
+  <div class="card">
+
+    <h2>👀 Data Tersimpan</h2>
+
+    <div id="preview" class="preview">
+      Belum ada data.
+    </div>
+
+    <button class="clear" onclick="hapusData()">
+      🗑️ HAPUS DATA
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function ambilData(){
+
+  return {
+
+    pria: document.getElementById("pria").value,
+
+    wanita: document.getElementById("wanita").value,
+
+    tanggal: document.getElementById("tanggal").value,
+
+    jam: document.getElementById("jam").value,
+
+    lokasi: document.getElementById("lokasi").value,
+
+    alamat: document.getElementById("alamat").value,
+
+    maps: document.getElementById("maps").value,
+
+    orangTuaPria:
+      document.getElementById("orangTuaPria").value,
+
+    orangTuaWanita:
+      document.getElementById("orangTuaWanita").value,
+
+    whatsapp:
+      document.getElementById("whatsapp").value,
+
+    bank:
+      document.getElementById("bank").value,
+
+    rekening:
+      document.getElementById("rekening").value,
+
+    pemilikRekening:
+      document.getElementById("pemilikRekening").value,
+
+    fotoCover:
+      document.getElementById("fotoCover").value,
+
+    fotoPria:
+      document.getElementById("fotoPria").value,
+
+    fotoWanita:
+      document.getElementById("fotoWanita").value,
+
+    foto1:
+      document.getElementById("foto1").value,
+
+    foto2:
+      document.getElementById("foto2").value,
+
+    foto3:
+      document.getElementById("foto3").value,
+
+    foto4:
+      document.getElementById("foto4").value,
+
+    musik:
+      document.getElementById("musik").value,
+
+    pesan:
+      document.getElementById("pesan").value
+
+  };
+
+}
+
+
+function simpanData(){
+
+  const data = ambilData();
+
+  localStorage.setItem(
+    "DATA_UNDANGAN",
+    JSON.stringify(data)
+  );
+
+  document.getElementById("saved").style.display="block";
+
+  tampilkanData();
+
+}
+
+
+function tampilkanData(){
+
+  const data =
+    JSON.parse(localStorage.getItem("DATA_UNDANGAN"));
+
+  if(!data){
+
+    document.getElementById("preview").innerHTML =
+      "Belum ada data.";
+
+    return;
+  }
+
+  document.getElementById("preview").innerHTML = `
+
+    <b class="gold">Pengantin</b><br>
+    ${data.pria || "-"} & ${data.wanita || "-"}<br><br>
+
+    <b class="gold">Tanggal</b><br>
+    ${data.tanggal || "-"}<br><br>
+
+    <b class="gold">Lokasi</b><br>
+    ${data.lokasi || "-"}<br>
+    ${data.alamat || "-"}<br><br>
+
+    <b class="gold">WhatsApp</b><br>
+    ${data.whatsapp || "-"}<br><br>
+
+    <b class="gold">Musik</b><br>
+    ${data.musik || "-"}<br><br>
+
+    <b class="gold">Foto Cover</b><br>
+    ${data.fotoCover || "-"}
+
+  `;
+
+}
+
+
+function hapusData(){
+
+  if(confirm("Hapus semua data pelanggan dari HP?")){
+
+    localStorage.removeItem("DATA_UNDANGAN");
+
+    location.reload();
+
+  }
+
+}
+
+
+function muatData(){
+
+  const data =
+    JSON.parse(localStorage.getItem("DATA_UNDANGAN"));
+
+  if(!data) return;
+
+  Object.keys(data).forEach(function(key){
+
+    const element =
+      document.getElementById(key);
+
+    if(element){
+
+      element.value = data[key] || "";
+
+    }
+
+  });
+
+  tampilkanData();
+
+}
+
+
+muatData();
+
+</script>
+
+</body>
+</html>
