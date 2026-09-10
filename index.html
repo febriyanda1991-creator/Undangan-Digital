@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#f6f1e9">
-
 <title>Wedding Invitation</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+<style>
 *{
   box-sizing:border-box;
   margin:0;
@@ -21,19 +21,10 @@ html{
 }
 
 body{
-  background:#eee9e1;
-  color:#3b3936;
+  background:#eee8df;
+  color:#302b27;
   font-family:'Montserrat',sans-serif;
   overflow-x:hidden;
-}
-
-body.locked{
-  overflow:hidden;
-}
-
-img{
-  display:block;
-  width:100%;
 }
 
 button{
@@ -41,196 +32,256 @@ button{
 }
 
 :root{
-  --cream:#f4efe7;
-  --paper:#faf7f1;
-  --brown:#6f6255;
-  --dark:#292723;
-  --gold:#aa8a5c;
-  --line:rgba(70,60,50,.18);
+  --cream:#f4eee6;
+  --paper:#faf7f2;
+  --dark:#302b27;
+  --soft:#82776c;
+  --line:rgba(48,43,39,.15);
+  --gold:#a8875d;
 }
 
-.page{
-  width:100%;
+/* =========================
+   GLOBAL
+========================= */
+
+section{
+  position:relative;
   overflow:hidden;
 }
 
 .container{
-  width:min(1050px,90%);
+  width:min(1080px,92%);
   margin:auto;
-}
-
-section{
-  position:relative;
-  padding:90px 0;
 }
 
 .serif{
   font-family:'Cormorant Garamond',serif;
 }
 
-.script{
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-}
-
-.small-title{
+.kicker{
   font-size:10px;
   letter-spacing:4px;
   text-transform:uppercase;
   color:var(--gold);
-  margin-bottom:15px;
+  margin-bottom:14px;
 }
 
 .section-title{
-  text-align:center;
-  margin-bottom:45px;
-}
-
-.section-title h2{
   font-family:'Cormorant Garamond',serif;
-  font-size:52px;
-  font-weight:400;
-  color:#38332d;
+  font-size:48px;
+  font-weight:500;
+  line-height:.95;
 }
 
-.section-title p{
-  max-width:600px;
-  margin:15px auto 0;
-  line-height:1.9;
-  font-size:12px;
-  color:#777066;
+.section-desc{
+  max-width:550px;
+  margin:18px auto 0;
+  color:var(--soft);
+  line-height:1.8;
+  font-size:13px;
 }
 
-/* =================================
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(55px);
+  transition:
+    opacity 1s cubic-bezier(.22,1,.36,1),
+    transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.reveal-left{
+  opacity:0;
+  transform:translateX(-70px);
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal-left.show{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.reveal-right{
+  opacity:0;
+  transform:translateX(70px);
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal-right.show{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.zoom-reveal{
+  opacity:0;
+  transform:scale(.82);
+  transition:
+    opacity 1.3s ease,
+    transform 1.5s cubic-bezier(.22,1,.36,1);
+}
+
+.zoom-reveal.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* =========================
    OPENING
-================================= */
+========================= */
 
-.opening{
+#opening{
   position:fixed;
   inset:0;
   z-index:9999;
-  background:#e9e0d4;
+  background:#eee8df;
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:1s ease;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
 }
 
-.opening.hide{
+#opening.hide{
   opacity:0;
   visibility:hidden;
-  transform:scale(1.04);
+  pointer-events:none;
 }
 
-.opening-photo{
-  position:absolute;
-  inset:0;
-}
-
-.opening-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.58);
-}
-
-.opening-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(20,15,10,.1),
-    rgba(20,15,10,.7)
-  );
-}
-
-.envelope-box{
-  position:relative;
-  z-index:2;
-  width:min(420px,88%);
+.opening-inner{
   text-align:center;
-  color:#fff;
+  width:90%;
+  max-width:500px;
 }
 
-.envelope-box .top-label{
-  letter-spacing:5px;
+.opening-small{
   font-size:10px;
-  margin-bottom:25px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#8c7a65;
+  margin-bottom:20px;
 }
 
-.envelope-box h1{
+.opening-names{
   font-family:'Cormorant Garamond',serif;
-  font-size:60px;
-  line-height:.9;
-  font-weight:400;
+  font-size:62px;
+  line-height:.8;
+  font-weight:500;
 }
 
-.envelope-box h1 span{
-  font-size:30px;
+.opening-names span{
   display:block;
-  margin:10px 0;
 }
 
-.dear{
-  margin-top:40px;
+.opening-to{
+  margin:25px 0 8px;
+  color:#82776c;
   font-size:11px;
-  letter-spacing:3px;
+  letter-spacing:2px;
 }
 
 .guest-name{
-  margin-top:8px;
   font-family:'Cormorant Garamond',serif;
   font-size:28px;
 }
 
-.open-envelope{
-  margin-top:35px;
-  padding:13px 28px;
-  border:1px solid rgba(255,255,255,.7);
-  background:rgba(255,255,255,.12);
-  color:#fff;
-  border-radius:2px;
+.envelope{
+  width:150px;
+  height:105px;
+  margin:35px auto;
+  position:relative;
   cursor:pointer;
+  perspective:800px;
+}
+
+.envelope-body{
+  position:absolute;
+  inset:0;
+  background:#d9cbb9;
+  border-radius:2px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.envelope-flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  border-left:75px solid transparent;
+  border-right:75px solid transparent;
+  border-top:55px solid #cbbba6;
+  transform-origin:top;
+  transition:transform .8s cubic-bezier(.22,1,.36,1);
+  z-index:3;
+}
+
+.envelope.open .envelope-flap{
+  transform:rotateX(180deg);
+}
+
+.envelope-heart{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:5;
+  font-size:25px;
+}
+
+.open-btn{
+  border:1px solid rgba(48,43,39,.25);
+  background:transparent;
+  padding:13px 27px;
   letter-spacing:2px;
   font-size:10px;
-  backdrop-filter:blur(5px);
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.3s;
 }
 
-.open-envelope:hover{
-  background:#fff;
-  color:#333;
+.open-btn:hover{
+  background:#302b27;
+  color:white;
 }
 
-/* =================================
+/* =========================
    HERO
-================================= */
+========================= */
 
 .hero{
-  height:100vh;
-  min-height:700px;
+  min-height:100svh;
+  background:#e8dfd4;
   display:flex;
   align-items:flex-end;
   justify-content:center;
-  text-align:center;
-  color:#fff;
-  overflow:hidden;
+  padding:30px 0;
 }
 
-.hero-image{
+.hero-bg{
   position:absolute;
   inset:0;
-}
-
-.hero-image img{
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.62);
-  animation:heroZoom 12s ease-in-out infinite alternate;
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.72);
+  transform:scale(1.08);
+  animation:heroZoom 8s ease forwards;
 }
 
 @keyframes heroZoom{
-  from{transform:scale(1);}
-  to{transform:scale(1.08);}
+  to{transform:scale(1);}
 }
 
 .hero-overlay{
@@ -239,85 +290,120 @@ section{
   background:
     linear-gradient(
       to bottom,
-      rgba(0,0,0,.08) 25%,
-      rgba(0,0,0,.7) 100%
+      rgba(0,0,0,.12),
+      rgba(0,0,0,.18) 40%,
+      rgba(0,0,0,.72)
     );
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-  padding:50px 20px 90px;
-}
-
-.hero-content .small{
-  font-size:10px;
-  letter-spacing:6px;
-  margin-bottom:25px;
-}
-
-.hero-content h1{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:400;
-  font-size:clamp(58px,10vw,110px);
-  line-height:.78;
-}
-
-.hero-content h1 span{
-  font-size:.38em;
-  display:block;
-  margin:14px 0;
+  color:white;
+  text-align:center;
+  width:90%;
+  padding-bottom:45px;
 }
 
 .hero-date{
-  margin-top:30px;
-  font-size:11px;
-  letter-spacing:4px;
+  font-size:10px;
+  letter-spacing:5px;
+  margin-bottom:25px;
+  opacity:0;
+  animation:fadeUp 1s .3s forwards;
 }
 
-/* =================================
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;
+  letter-spacing:2px;
+  font-style:italic;
+  opacity:0;
+  animation:fadeUp 1s .55s forwards;
+}
+
+.hero-names{
+  font-family:'Cormorant Garamond',serif;
+  font-size:76px;
+  line-height:.8;
+  font-weight:500;
+  margin:18px 0 28px;
+  opacity:0;
+  animation:fadeUp 1.2s .8s forwards;
+}
+
+.hero-names span{
+  display:block;
+}
+
+.hero-scroll{
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  opacity:0;
+  animation:fadeUp 1s 1.2s forwards, float 2s 2.2s infinite;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(35px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(8px)}
+}
+
+/* =========================
    INTRO
-================================= */
+========================= */
 
 .intro{
   background:var(--paper);
+  padding:110px 0;
   text-align:center;
 }
 
 .bismillah{
-  font-family:serif;
-  font-size:30px;
-  margin-bottom:28px;
-}
-
-.intro h2{
   font-family:'Cormorant Garamond',serif;
-  font-size:42px;
-  font-weight:400;
-  margin-bottom:20px;
+  font-size:31px;
+  margin-bottom:25px;
 }
 
-.intro p{
+.intro-text{
   max-width:650px;
   margin:auto;
-  font-size:12px;
   line-height:2;
-  color:#777;
+  color:#71685f;
+  font-size:13px;
 }
 
-/* =================================
+/* =========================
    COUPLE
-================================= */
+========================= */
 
 .couple{
-  background:#eee7dd;
+  background:#eee8df;
+  padding:110px 0;
+}
+
+.couple-head{
+  text-align:center;
+  margin-bottom:65px;
 }
 
 .couple-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:start;
+  gap:50px;
+  max-width:900px;
+  margin:auto;
 }
 
 .person{
@@ -325,807 +411,1308 @@ section{
 }
 
 .person-photo{
-  width:260px;
-  height:350px;
+  width:270px;
+  height:360px;
   margin:auto;
   overflow:hidden;
   position:relative;
-}
-
-.person-photo:after{
-  content:"";
-  position:absolute;
-  inset:12px;
-  border:1px solid rgba(255,255,255,.7);
-  pointer-events:none;
 }
 
 .person-photo img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:.7s;
+  transition:transform 1.5s cubic-bezier(.22,1,.36,1);
 }
 
-.person:hover .person-photo img{
-  transform:scale(1.05);
+.person:hover img{
+  transform:scale(1.07);
 }
 
 .person-name{
   font-family:'Cormorant Garamond',serif;
-  font-size:38px;
-  margin-top:22px;
+  font-size:39px;
+  margin-top:25px;
 }
 
 .person-role{
   font-size:9px;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:#958675;
-  margin:7px 0 15px;
+  color:var(--gold);
+  margin:8px 0 14px;
 }
 
 .person-parents{
-  font-size:11px;
+  color:#82776c;
+  font-size:12px;
   line-height:1.8;
-  color:#777;
 }
 
-/* =================================
+/* =========================
    COUNTDOWN
-================================= */
-
-.countdown-section{
-  background:#faf7f1;
-  text-align:center;
-}
+========================= */
 
 .countdown{
-  max-width:700px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
+  background:#302b27;
+  color:white;
+  padding:90px 0;
+  text-align:center;
+}
+
+.countdown .kicker{
+  color:#c5aa83;
+}
+
+.timer{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin-top:45px;
+}
+
+.timer-box{
+  min-width:80px;
+}
+
+.timer-number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;
+}
+
+.timer-label{
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#aaa099;
+}
+
+/* =========================
+   EVENT
+========================= */
+
+.event{
+  padding:110px 0;
+  background:var(--paper);
+  text-align:center;
+}
+
+.event-card{
+  max-width:650px;
+  margin:55px auto 0;
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
+  padding:45px 20px;
 }
 
-.count-item{
-  padding:25px 5px;
-  border-right:1px solid var(--line);
-}
-
-.count-item:last-child{
-  border-right:0;
-}
-
-.count-number{
-  font-family:'Cormorant Garamond',serif;
-  font-size:43px;
-}
-
-.count-label{
-  margin-top:5px;
-  font-size:8px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:#999;
-}
-
-/* =================================
-   SAVE DATE
-================================= */
-
-.save-date{
-  background:#e6ddd0;
-}
-
-.save-layout{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-  align-items:center;
-}
-
-.calendar{
-  background:#f9f5ee;
-  padding:35px;
-  text-align:center;
-  box-shadow:0 20px 50px rgba(50,40,30,.08);
-}
-
-.calendar-month{
-  font-family:'Cormorant Garamond',serif;
-  font-size:30px;
-  margin-bottom:25px;
-}
-
-.calendar-grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:10px;
-  font-size:10px;
-}
-
-.calendar-grid div{
-  padding:5px;
-}
-
-.calendar-grid .active{
-  border-radius:50%;
-  background:#6e6153;
-  color:#fff;
-}
-
-.event-info{
-  text-align:center;
-}
-
-.event-type{
-  font-size:10px;
+.event-day{
+  font-size:11px;
   letter-spacing:4px;
   color:var(--gold);
+  text-transform:uppercase;
 }
 
-.event-info h3{
+.event-date{
   font-family:'Cormorant Garamond',serif;
-  font-size:44px;
-  font-weight:400;
-  margin:10px 0;
+  font-size:70px;
+  margin:12px 0;
 }
 
-.event-info p{
+.event-time{
   font-size:12px;
-  line-height:2;
-  color:#756d64;
+  color:#82776c;
+  margin-bottom:30px;
 }
 
-.maps{
+.event-location{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;
+}
+
+.event-address{
+  color:#82776c;
+  font-size:12px;
+  line-height:1.7;
+  margin:10px auto 25px;
+  max-width:450px;
+}
+
+.maps-btn{
   display:inline-block;
-  margin-top:20px;
-  padding:12px 25px;
-  border:1px solid #75695c;
-  color:#544b42;
+  padding:12px 22px;
+  border:1px solid var(--line);
+  color:var(--dark);
   text-decoration:none;
   font-size:9px;
   letter-spacing:2px;
+  text-transform:uppercase;
+  transition:.3s;
 }
 
-/* =================================
+.maps-btn:hover{
+  background:#302b27;
+  color:white;
+}
+
+/* =========================
    GALLERY
-================================= */
-
-.gallery-section{
-  background:#f8f5ef;
-}
-
-.gallery-intro{
-  max-width:650px;
-  margin:-15px auto 50px;
-  text-align:center;
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  line-height:2;
-  color:#716960;
-}
+========================= */
 
 .gallery{
+  background:#e8dfd4;
+  padding:110px 0;
+}
+
+.gallery-head{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.gallery-grid{
   display:grid;
   grid-template-columns:repeat(12,1fr);
-  gap:14px;
+  grid-auto-rows:150px;
+  gap:12px;
 }
 
 .gallery-item{
   overflow:hidden;
   position:relative;
+  background:#d7cec3;
+}
+
+.gallery-item:nth-child(1){
+  grid-column:span 7;
+  grid-row:span 3;
+}
+
+.gallery-item:nth-child(2){
+  grid-column:span 5;
+  grid-row:span 2;
+}
+
+.gallery-item:nth-child(3){
+  grid-column:span 5;
+  grid-row:span 3;
+}
+
+.gallery-item:nth-child(4){
+  grid-column:span 7;
+  grid-row:span 2;
+}
+
+.gallery-item:nth-child(5){
+  grid-column:span 5;
+  grid-row:span 3;
 }
 
 .gallery-item img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:1s ease;
+  transition:
+    transform 1.4s cubic-bezier(.22,1,.36,1),
+    filter 1s;
 }
 
 .gallery-item:hover img{
-  transform:scale(1.06);
+  transform:scale(1.08);
+  filter:brightness(.85);
 }
 
-.g1{
-  grid-column:1 / 6;
-  height:440px;
-}
-
-.g2{
-  grid-column:6 / 13;
-  height:300px;
-}
-
-.g3{
-  grid-column:6 / 9;
-  height:300px;
-}
-
-.g4{
-  grid-column:9 / 13;
-  height:300px;
-}
-
-.gallery-quote{
-  grid-column:1 / 6;
-  min-height:300px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:35px;
-  text-align:center;
-  background:#e8dfd3;
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  line-height:2;
-  font-size:14px;
-}
-
-.gallery-bottom{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-.gallery-bottom .gallery-item{
-  height:350px;
-}
-
-/* =================================
+/* =========================
    STORY
-================================= */
+========================= */
 
 .story{
-  background:#e7ded2;
-  text-align:center;
+  background:var(--paper);
+  padding:120px 0;
 }
 
-.story-inner{
-  max-width:700px;
-  margin:auto;
+.story-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:70px;
 }
 
-.story p{
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  font-size:15px;
-  line-height:2.2;
-  color:#696056;
+.story-photo{
+  height:600px;
+  overflow:hidden;
 }
 
-/* =================================
+.story-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 2s cubic-bezier(.22,1,.36,1);
+}
+
+.story-photo:hover img{
+  transform:scale(1.05);
+}
+
+.story-content{
+  padding:20px;
+}
+
+.story-number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:100px;
+  color:#ddd4c9;
+  line-height:.7;
+  margin-bottom:30px;
+}
+
+.story-content p{
+  color:#756c63;
+  line-height:2;
+  font-size:13px;
+  margin-top:25px;
+}
+
+/* =========================
    GIFT
-================================= */
+========================= */
 
 .gift{
-  background:#f8f4ec;
+  background:#302b27;
+  color:white;
+  padding:110px 0;
   text-align:center;
 }
 
-.gift-intro{
-  max-width:550px;
-  margin:-15px auto 35px;
-  line-height:2;
-  font-size:11px;
-  color:#81786e;
+.gift-card{
+  max-width:430px;
+  margin:50px auto 0;
+  border:1px solid rgba(255,255,255,.18);
+  padding:40px 25px;
 }
 
-.bank-card{
-  max-width:420px;
-  margin:auto;
-  background:#eee6da;
-  padding:35px;
-  position:relative;
-}
-
-.bank-name{
-  font-size:11px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-}
-
-.account-number{
+.bank{
   font-family:'Cormorant Garamond',serif;
-  font-size:32px;
+  font-size:38px;
+}
+
+.account{
+  font-size:25px;
+  letter-spacing:3px;
   margin:18px 0 5px;
 }
 
-.account-owner{
-  font-size:10px;
-  color:#777;
+.owner{
+  color:#aaa099;
+  font-size:11px;
 }
 
-.copy-button{
-  margin-top:22px;
-  padding:11px 25px;
-  background:#665a4e;
-  color:#fff;
-  border:0;
+.copy-btn{
+  margin-top:25px;
+  padding:12px 25px;
+  background:transparent;
+  color:white;
+  border:1px solid rgba(255,255,255,.35);
+  cursor:pointer;
   font-size:9px;
   letter-spacing:2px;
 }
 
-/* =================================
+/* =========================
    WISHES
-================================= */
+========================= */
 
 .wishes{
-  background:#e9e1d6;
+  background:var(--paper);
+  padding:110px 0;
 }
 
-.wishes-form{
+.wishes-head{
+  text-align:center;
+}
+
+.wish-form{
   max-width:600px;
-  margin:auto;
+  margin:45px auto;
 }
 
-.form-input,
-.form-select,
-.form-textarea{
+.input,
+.textarea,
+.select{
   width:100%;
   padding:15px;
-  margin-bottom:12px;
-  border:1px solid rgba(70,60,50,.2);
-  background:#faf8f3;
+  border:1px solid var(--line);
+  background:transparent;
   outline:none;
+  margin-bottom:12px;
   font-family:inherit;
-  font-size:11px;
+  font-size:12px;
 }
 
-.form-textarea{
+.textarea{
   min-height:120px;
   resize:vertical;
 }
 
-.send-wish{
+.send-btn{
   width:100%;
   padding:15px;
-  background:#63584d;
-  color:#fff;
   border:0;
+  background:#302b27;
+  color:white;
+  cursor:pointer;
   letter-spacing:2px;
   font-size:9px;
 }
 
-.wish-counter{
-  text-align:center;
-  margin:25px 0;
-  font-size:10px;
-  color:#777;
-}
-
-.wishes-list{
+.wish-list{
   max-width:650px;
-  margin:35px auto 0;
+  margin:auto;
 }
 
 .wish{
-  background:#f8f5ef;
-  padding:18px;
-  margin-bottom:10px;
-  border-left:2px solid #ad956f;
+  border-bottom:1px solid var(--line);
+  padding:20px 0;
 }
 
 .wish strong{
-  font-size:11px;
+  font-size:12px;
 }
 
-.wish span{
+.wish small{
   display:block;
-  font-size:10px;
-  color:#999;
-  margin:5px 0 10px;
+  color:#9a9188;
+  margin:4px 0 10px;
 }
 
 .wish p{
-  font-size:11px;
-  line-height:1.8;
+  color:#6e665e;
+  font-size:12px;
+  line-height:1.7;
 }
 
-/* =================================
+/* =========================
    CLOSING
-================================= */
+========================= */
 
 .closing{
-  min-height:700px;
+  min-height:90svh;
+  position:relative;
   display:flex;
-  align-items:center;
+  align-items:flex-end;
   justify-content:center;
-  text-align:center;
-  color:#fff;
+  padding-bottom:70px;
+  color:white;
 }
 
 .closing-bg{
   position:absolute;
   inset:0;
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.55);
+  transition:transform 8s ease;
 }
 
-.closing-bg img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.5);
+.closing:hover .closing-bg{
+  transform:scale(1.05);
 }
 
 .closing-overlay{
   position:absolute;
   inset:0;
-  background:rgba(30,25,20,.35);
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.75),
+    rgba(0,0,0,.05)
+  );
 }
 
 .closing-content{
   position:relative;
   z-index:2;
-  max-width:700px;
-  padding:30px;
+  text-align:center;
 }
 
-.closing-content h2{
+.closing-title{
   font-family:'Cormorant Garamond',serif;
-  font-size:58px;
-  font-weight:400;
-  line-height:1;
+  font-size:65px;
+  line-height:.85;
 }
 
-.closing-content p{
-  margin:25px auto;
-  max-width:550px;
-  line-height:2;
-  font-size:11px;
+.closing-love{
+  letter-spacing:5px;
+  font-size:9px;
+  margin-top:25px;
 }
 
-.closing-names{
-  font-family:'Cormorant Garamond',serif;
-  font-size:38px;
+/* =========================
+   FLOATING DECORATION
+========================= */
+
+.orbit{
+  position:absolute;
+  width:180px;
+  height:180px;
+  border:1px solid rgba(168,135,93,.18);
+  border-radius:50%;
+  animation:rotate 20s linear infinite;
+  pointer-events:none;
 }
 
-/* =================================
+.orbit.one{
+  top:-70px;
+  right:-70px;
+}
+
+.orbit.two{
+  bottom:-90px;
+  left:-90px;
+  width:230px;
+  height:230px;
+}
+
+@keyframes rotate{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+
+/* =========================
    MUSIC
-================================= */
+========================= */
 
-.music-button{
+.music-btn{
   position:fixed;
   right:18px;
   bottom:18px;
+  z-index:100;
   width:45px;
   height:45px;
   border-radius:50%;
-  background:rgba(70,60,50,.85);
-  color:#fff;
-  z-index:100;
-  font-size:15px;
+  border:1px solid rgba(255,255,255,.6);
+  background:rgba(48,43,39,.65);
+  color:white;
+  backdrop-filter:blur(8px);
+  cursor:pointer;
 }
 
-/* =================================
-   ANIMATION
-================================= */
-
-.reveal{
-  opacity:0;
-  transform:translateY(35px);
-  transition:1s ease;
+.music-btn.playing{
+  animation:musicSpin 4s linear infinite;
 }
 
-.reveal.show{
-  opacity:1;
-  transform:translateY(0);
+@keyframes musicSpin{
+  to{transform:rotate(360deg)}
 }
 
-/* =================================
+/* =========================
    MOBILE
-================================= */
+========================= */
 
 @media(max-width:700px){
 
-  section{
-    padding:70px 0;
+  .section-title{
+    font-size:42px;
   }
 
-  .hero{
-    min-height:680px;
+  .opening-names{
+    font-size:52px;
   }
 
-  .hero-content{
-    padding-bottom:70px;
-  }
-
-  .hero-content h1{
-    font-size:68px;
-  }
-
-  .opening h1{
-    font-size:55px;
+  .hero-names{
+    font-size:59px;
   }
 
   .couple-grid{
     grid-template-columns:1fr;
-    gap:55px;
+    gap:70px;
   }
 
   .person-photo{
-    width:230px;
+    width:235px;
     height:315px;
   }
 
-  .countdown{
+  .timer{
+    gap:12px;
+  }
+
+  .timer-box{
+    min-width:65px;
+  }
+
+  .timer-number{
+    font-size:36px;
+  }
+
+  .event-date{
+    font-size:58px;
+  }
+
+  .gallery-grid{
     grid-template-columns:repeat(2,1fr);
+    grid-auto-rows:190px;
   }
 
-  .count-item:nth-child(2){
-    border-right:0;
+  .gallery-item:nth-child(1){
+    grid-column:span 2;
+    grid-row:span 2;
   }
 
-  .count-item:nth-child(-n+2){
-    border-bottom:1px solid var(--line);
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(5){
+    grid-column:span 1;
+    grid-row:span 1;
   }
 
-  .save-layout{
+  .story-layout{
     grid-template-columns:1fr;
+    gap:35px;
   }
 
-  .gallery{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
+  .story-photo{
+    height:480px;
   }
 
-  .g1,
-  .g2,
-  .g3,
-  .g4{
-    grid-column:auto;
-    height:230px;
+  .closing-title{
+    font-size:55px;
   }
-
-  .gallery-quote{
-    grid-column:1 / 3;
-    min-height:230px;
-  }
-
-  .gallery-bottom{
-    grid-column:1 / 3;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-
-  .gallery-bottom .gallery-item{
-    height:230px;
-  }
-
-  .section-title h2{
-    font-size:43px;
-  }
-
-  .closing-content h2{
-    font-size:48px;
-  }
-
 }
 </style>
 </head>
 
-<body class="locked">
+<body>
 
-<div id="app"></div>
+<!-- =========================
+     OPENING
+========================= -->
 
-<button
-  id="musicButton"
-  class="music-button"
-  style="display:none"
->
-  ♪
+<div id="opening">
+
+  <div class="opening-inner">
+
+    <div class="opening-small">
+      The Wedding Of
+    </div>
+
+    <div class="opening-names">
+      <span id="openPria">Nama</span>
+      <span>&</span>
+      <span id="openWanita">Nama</span>
+    </div>
+
+    <div class="opening-to">
+      Kepada Yth.
+    </div>
+
+    <div class="guest-name" id="openGuest">
+      Tamu Undangan
+    </div>
+
+    <div class="envelope" id="envelope">
+
+      <div class="envelope-body"></div>
+
+      <div class="envelope-flap"></div>
+
+      <div class="envelope-heart">
+        ♡
+      </div>
+
+    </div>
+
+    <button class="open-btn" onclick="bukaUndangan()">
+      Buka Undangan
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+  ♫
 </button>
+
+<audio id="music" loop></audio>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <div class="hero-bg" id="heroBg"></div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+
+    <div class="hero-date" id="heroDate">
+      12 • 08 • 2026
+    </div>
+
+    <div class="hero-title">
+      We are getting married
+    </div>
+
+    <div class="hero-names">
+      <span id="heroPria">Nama</span>
+      <span>&</span>
+      <span id="heroWanita">Nama</span>
+    </div>
+
+    <div class="hero-scroll">
+      Scroll to discover ↓
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="intro">
+
+  <div class="orbit one"></div>
+
+  <div class="container">
+
+    <div class="reveal">
+
+      <div class="bismillah">
+        بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+      </div>
+
+      <div class="kicker">
+        Assalaamu'alaikum Wr. Wb.
+      </div>
+
+      <p class="intro-text">
+        Dengan memohon rahmat dan ridho Allah SWT,
+        kami bermaksud mengundang Bapak/Ibu/Saudara/i
+        untuk hadir dan memberikan doa restu pada
+        acara pernikahan kami.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COUPLE
+========================= -->
+
+<section class="couple">
+
+  <div class="orbit two"></div>
+
+  <div class="container">
+
+    <div class="couple-head reveal">
+
+      <div class="kicker">
+        The Couple
+      </div>
+
+      <h2 class="section-title">
+        Pasangan Pengantin
+      </h2>
+
+    </div>
+
+
+    <div class="couple-grid">
+
+      <div class="person reveal-left">
+
+        <div class="person-photo">
+          <img id="fotoPria" src="" alt="Pengantin Pria">
+        </div>
+
+        <div class="person-name" id="namaPria">
+          Nama Pria
+        </div>
+
+        <div class="person-role">
+          Groom
+        </div>
+
+        <div class="person-parents" id="ortuPria">
+          Putra dari Bapak & Ibu
+        </div>
+
+      </div>
+
+
+      <div class="person reveal-right">
+
+        <div class="person-photo">
+          <img id="fotoWanita" src="" alt="Pengantin Wanita">
+        </div>
+
+        <div class="person-name" id="namaWanita">
+          Nama Wanita
+        </div>
+
+        <div class="person-role">
+          Bride
+        </div>
+
+        <div class="person-parents" id="ortuWanita">
+          Putri dari Bapak & Ibu
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COUNTDOWN
+========================= -->
+
+<section class="countdown">
+
+  <div class="container reveal">
+
+    <div class="kicker">
+      Counting The Days
+    </div>
+
+    <h2 class="section-title">
+      Menuju Hari Bahagia
+    </h2>
+
+    <div class="timer">
+
+      <div class="timer-box">
+        <div class="timer-number" id="days">00</div>
+        <div class="timer-label">Days</div>
+      </div>
+
+      <div class="timer-box">
+        <div class="timer-number" id="hours">00</div>
+        <div class="timer-label">Hours</div>
+      </div>
+
+      <div class="timer-box">
+        <div class="timer-number" id="minutes">00</div>
+        <div class="timer-label">Minutes</div>
+      </div>
+
+      <div class="timer-box">
+        <div class="timer-number" id="seconds">00</div>
+        <div class="timer-label">Seconds</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     EVENT
+========================= -->
+
+<section class="event">
+
+  <div class="container">
+
+    <div class="reveal">
+
+      <div class="kicker">
+        Save The Date
+      </div>
+
+      <h2 class="section-title">
+        Waktu & Tempat
+      </h2>
+
+    </div>
+
+
+    <div class="event-card reveal">
+
+      <div class="event-day" id="eventDay">
+        Wednesday
+      </div>
+
+      <div class="event-date" id="eventDate">
+        12.08.26
+      </div>
+
+      <div class="event-time" id="eventTime">
+        09.00 WIB - selesai
+      </div>
+
+      <div class="event-location" id="eventLocation">
+        Nama Lokasi
+      </div>
+
+      <div class="event-address" id="eventAddress">
+        Alamat acara
+      </div>
+
+      <a
+        id="mapsLink"
+        class="maps-btn"
+        href="#"
+        target="_blank"
+      >
+        Buka Google Maps
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="gallery">
+
+  <div class="container">
+
+    <div class="gallery-head reveal">
+
+      <div class="kicker">
+        Our Moments
+      </div>
+
+      <h2 class="section-title">
+        Love Gallery
+      </h2>
+
+      <p class="section-desc">
+        Beberapa momen yang menjadi bagian dari perjalanan
+        kisah kami.
+      </p>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+      <div class="gallery-item zoom-reveal">
+        <img id="gallery1" src="" alt="">
+      </div>
+
+      <div class="gallery-item zoom-reveal">
+        <img id="gallery2" src="" alt="">
+      </div>
+
+      <div class="gallery-item zoom-reveal">
+        <img id="gallery3" src="" alt="">
+      </div>
+
+      <div class="gallery-item zoom-reveal">
+        <img id="gallery4" src="" alt="">
+      </div>
+
+      <div class="gallery-item zoom-reveal">
+        <img id="gallery5" src="" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     STORY
+========================= -->
+
+<section class="story">
+
+  <div class="container">
+
+    <div class="story-layout">
+
+      <div class="story-photo reveal-left">
+
+        <img id="storyPhoto" src="" alt="Our Story">
+
+      </div>
+
+
+      <div class="story-content reveal-right">
+
+        <div class="story-number">
+          01
+        </div>
+
+        <div class="kicker">
+          Our Love Story
+        </div>
+
+        <h2 class="section-title">
+          Sebuah Kisah,
+          <br>
+          Sebuah Perjalanan.
+        </h2>
+
+        <p id="storyText">
+          Setiap pertemuan memiliki cerita.
+          Setiap cerita memiliki perjalanan.
+          Dan perjalanan inilah yang membawa kami
+          sampai pada hari istimewa ini.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     GIFT
+========================= -->
+
+<section class="gift">
+
+  <div class="container reveal">
+
+    <div class="kicker">
+      Wedding Gift
+    </div>
+
+    <h2 class="section-title">
+      Hadiah Pernikahan
+    </h2>
+
+    <p class="section-desc" style="color:#aaa099">
+      Doa dan kehadiran Anda merupakan hadiah
+      terindah bagi kami.
+    </p>
+
+
+    <div class="gift-card">
+
+      <div class="bank" id="bankName">
+        Bank
+      </div>
+
+      <div class="account" id="rekening">
+        000000000
+      </div>
+
+      <div class="owner" id="pemilik">
+        Nama Pemilik
+      </div>
+
+      <button class="copy-btn" onclick="salinRekening()">
+        Salin Nomor Rekening
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     WISHES
+========================= -->
+
+<section class="wishes">
+
+  <div class="container">
+
+    <div class="wishes-head reveal">
+
+      <div class="kicker">
+        Wishes
+      </div>
+
+      <h2 class="section-title">
+        Ucapan & Doa
+      </h2>
+
+      <p class="section-desc">
+        Berikan ucapan dan doa terbaik untuk kami.
+      </p>
+
+    </div>
+
+
+    <div class="wish-form reveal">
+
+      <input
+        id="wishName"
+        class="input"
+        type="text"
+        placeholder="Nama Anda"
+      >
+
+      <select id="wishStatus" class="select">
+
+        <option value="Hadir">
+          Hadir
+        </option>
+
+        <option value="Tidak Hadir">
+          Tidak Hadir
+        </option>
+
+        <option value="Masih Ragu">
+          Masih Ragu
+        </option>
+
+      </select>
+
+      <textarea
+        id="wishMessage"
+        class="textarea"
+        placeholder="Tulis ucapan dan doa..."
+      ></textarea>
+
+      <button class="send-btn" onclick="kirimUcapan()">
+        KIRIM UCAPAN
+      </button>
+
+    </div>
+
+
+    <div id="wishList" class="wish-list"></div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CLOSING
+========================= -->
+
+<section class="closing">
+
+  <div
+    class="closing-bg"
+    id="closingBg"
+  ></div>
+
+  <div class="closing-overlay"></div>
+
+  <div class="closing-content reveal">
+
+    <div class="kicker" style="color:#d0b58e">
+      With Love
+    </div>
+
+    <div class="closing-title">
+
+      <span id="closingPria">
+        Nama
+      </span>
+
+      <br>
+
+      &
+
+      <br>
+
+      <span id="closingWanita">
+        Nama
+      </span>
+
+    </div>
+
+    <div class="closing-love">
+      TERIMA KASIH TELAH MENJADI BAGIAN DARI
+      HARI BAHAGIA KAMI
+    </div>
+
+  </div>
+
+</section>
+
 
 <script>
 
 /* =========================================================
-   DEFAULT DATA
-========================================================= */
-
-const DEFAULT_DATA = {
-
-  idPelanggan:"demo",
-
-  pria:"Naupal",
-
-  wanita:"Annisa",
-
-  tanggal:"2026-12-20",
-
-  jam:"09:00",
-
-  lokasi:"Tempat Acara",
-
-  alamat:"Alamat acara pernikahan",
-
-  maps:"",
-
-  orangTuaPria:"Bapak & Ibu",
-
-  orangTuaWanita:"Bapak & Ibu",
-
-  whatsapp:"",
-
-  bank:"BSI",
-
-  rekening:"0000000000",
-
-  pemilikRekening:"Nama Pemilik",
-
-  fotoCover:"Prewedding idea.jpeg",
-
-  fotoPria:"Unknown 4.jpeg",
-
-  fotoWanita:"Unknown 5.jpeg",
-
-  foto1:"Unknown 6.jpeg",
-
-  foto2:"Unknown 7.jpeg",
-
-  foto3:"Prewedding idea.jpeg",
-
-  foto4:"Unknown 4.jpeg",
-
-  musik:"",
-
-  pesan:"Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.",
-
-  tema:"1"
-
-};
-
-
-/* =========================================================
-   GITHUB
+   KONFIGURASI GITHUB
 ========================================================= */
 
 const GITHUB_RAW =
 "https://raw.githubusercontent.com/febriyanda1991-creator/Undangan-Digital/main/";
 
 
-function fotoURL(nama){
-
-  if(!nama) return "";
-
-  let value = String(nama).trim();
-
-  if(
-    value.startsWith("http://") ||
-    value.startsWith("https://") ||
-    value.startsWith("data:")
-  ){
-    return value;
-  }
-
-  return GITHUB_RAW +
-    encodeURIComponent(value);
-}
-
-
 /* =========================================================
-   DATA DARI HASH
+   DATA DARI LINK
 ========================================================= */
 
-function getLinkData(){
+function ambilDataDariLink(){
 
   try{
 
-    const hash =
-      window.location.hash;
+    const hash = window.location.hash;
 
     if(!hash.startsWith("#data=")){
       return null;
     }
 
-    const encoded =
-      hash.substring(6);
+    const encoded = hash.substring(6);
 
-    const json =
-      decodeURIComponent(encoded);
-
-    return JSON.parse(json);
+    return JSON.parse(
+      decodeURIComponent(encoded)
+    );
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Data undangan tidak valid:",
+      error
+    );
 
     return null;
-
   }
-
 }
 
 
 /* =========================================================
-   DATA DARI LOCAL STORAGE
+   DATA
 ========================================================= */
 
-function getSavedData(){
+let data =
+  ambilDataDariLink()
+  ||
+  JSON.parse(
+    localStorage.getItem("DATA_UNDANGAN")
+    ||
+    "null"
+  )
+  ||
+  {
 
-  try{
+    pria:"Nama Pria",
 
-    const saved =
-      localStorage.getItem(
-        "DATA_UNDANGAN"
-      );
+    wanita:"Nama Wanita",
 
-    if(!saved) return null;
+    tanggal:"2026-08-12",
 
-    return JSON.parse(saved);
+    jam:"09:00",
 
-  }catch(error){
+    lokasi:"Nama Lokasi",
 
-    return null;
+    alamat:"Alamat Acara",
 
-  }
+    maps:"",
 
-}
+    orangTuaPria:"Putra dari Bapak & Ibu",
 
+    orangTuaWanita:"Putri dari Bapak & Ibu",
 
-/* =========================================================
-   DATA UTAMA
-========================================================= */
+    whatsapp:"",
 
-const LINK_DATA =
-  getLinkData();
+    bank:"Bank",
 
-let DATA;
+    rekening:"000000000",
 
-if(LINK_DATA){
+    pemilikRekening:"Nama Pemilik",
 
-  DATA = {
-    ...DEFAULT_DATA,
-    ...LINK_DATA
+    fotoCover:"",
+
+    fotoPria:"",
+
+    fotoWanita:"",
+
+    foto1:"",
+
+    foto2:"",
+
+    foto3:"",
+
+    foto4:"",
+
+    musik:"",
+
+    pesan:"Setiap pertemuan memiliki cerita.",
+
+    idPelanggan:""
+
   };
+
+
+/* Simpan data link ke browser */
+
+if(ambilDataDariLink()){
 
   localStorage.setItem(
     "DATA_UNDANGAN",
-    JSON.stringify(DATA)
+    JSON.stringify(data)
   );
-
-}else{
-
-  const saved =
-    getSavedData();
-
-  DATA = saved
-    ? {
-        ...DEFAULT_DATA,
-        ...saved
-      }
-    : {
-        ...DEFAULT_DATA
-      };
 
 }
 
 
 /* =========================================================
-   NAMA TAMU ?to=
+   FOTO GITHUB
 ========================================================= */
 
-function getGuestName(){
+function fotoGitHub(namaFile){
+
+  if(!namaFile){
+    return "";
+  }
+
+  if(
+    namaFile.startsWith("http://")
+    ||
+    namaFile.startsWith("https://")
+  ){
+
+    return namaFile;
+  }
+
+  return GITHUB_RAW +
+    encodeURIComponent(namaFile)
+      .replace(/%2F/g,"/");
+}
+
+
+/* =========================================================
+   GUEST
+========================================================= */
+
+function ambilNamaTamu(){
 
   const params =
     new URLSearchParams(
       window.location.search
     );
 
-  const guest =
-    params.get("to");
-
-  if(!guest){
-    return "Tamu Undangan";
-  }
-
-  return guest
-    .replace(/\+/g," ")
-    .trim();
+  return (
+    params.get("to")
+    ||
+    "Tamu Undangan"
+  );
 
 }
 
@@ -1134,1159 +1721,317 @@ function getGuestName(){
    TANGGAL
 ========================================================= */
 
-function dateObject(){
+function formatTanggal(dateString){
 
-  return new Date(
-    DATA.tanggal +
-    "T" +
-    (DATA.jam || "00:00") +
-    ":00"
-  );
+  const d =
+    new Date(
+      dateString + "T00:00:00"
+    );
 
-}
-
-
-function formatTanggal(){
-
-  if(!DATA.tanggal){
-    return "";
+  if(isNaN(d)){
+    return "12.08.26";
   }
-
-  const d =
-    new Date(
-      DATA.tanggal +
-      "T00:00:00"
-    );
-
-  return d.toLocaleDateString(
-    "id-ID",
-    {
-      weekday:"long",
-      day:"numeric",
-      month:"long",
-      year:"numeric"
-    }
-  );
-
-}
-
-
-function formatShortDate(){
-
-  if(!DATA.tanggal){
-    return "";
-  }
-
-  const d =
-    new Date(
-      DATA.tanggal +
-      "T00:00:00"
-    );
-
-  return d.toLocaleDateString(
-    "id-ID",
-    {
-      day:"2-digit",
-      month:"2-digit",
-      year:"numeric"
-    }
-  );
-
-}
-
-
-/* =========================================================
-   OPENING
-========================================================= */
-
-function openingHTML(){
-
-  return `
-
-    <div
-      id="opening"
-      class="opening"
-    >
-
-      <div class="opening-photo">
-
-        <img
-          src="${fotoURL(DATA.fotoCover)}"
-          alt="Cover"
-          onerror="this.style.display='none'"
-        >
-
-      </div>
-
-      <div class="opening-overlay"></div>
-
-
-      <div class="envelope-box">
-
-        <div class="top-label">
-          THE WEDDING OF
-        </div>
-
-        <h1>
-
-          ${escapeHTML(DATA.pria)}
-
-          <span>&</span>
-
-          ${escapeHTML(DATA.wanita)}
-
-        </h1>
-
-
-        <div class="dear">
-          DEAR
-        </div>
-
-
-        <div class="guest-name">
-          ${escapeHTML(getGuestName())}
-        </div>
-
-
-        <button
-          class="open-envelope"
-          onclick="openInvitation()"
-        >
-          PRESS THE ENVELOPE TO OPEN
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-function heroHTML(){
-
-  return `
-
-    <section class="hero">
-
-      <div class="hero-image">
-
-        <img
-          src="${fotoURL(DATA.fotoCover)}"
-          alt="Foto utama"
-          onerror="this.style.display='none'"
-        >
-
-      </div>
-
-
-      <div class="hero-overlay"></div>
-
-
-      <div class="hero-content reveal">
-
-        <div class="small">
-          WE ARE
-          <br>
-          GETTING MARRIED
-        </div>
-
-
-        <h1>
-
-          ${escapeHTML(DATA.pria)}
-
-          <span>&</span>
-
-          ${escapeHTML(DATA.wanita)}
-
-        </h1>
-
-
-        <div class="hero-date">
-
-          ${formatShortDate()}
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-function introHTML(){
-
-  return `
-
-    <section class="intro">
-
-      <div class="container reveal">
-
-        <div class="bismillah">
-          بسم الله الرحمن الرحيم
-        </div>
-
-        <h2>
-          Assalaamu'alaikum wr wb
-        </h2>
-
-        <p>
-          Tanpa mengurangi rasa hormat,
-          kami mengundang Bapak/Ibu/Saudara/i
-          serta kerabat sekalian untuk menghadiri
-          acara pernikahan kami.
-        </p>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   COUPLE
-========================================================= */
-
-function coupleHTML(){
-
-  return `
-
-    <section class="couple">
-
-      <div class="container">
-
-        <div class="section-title reveal">
-
-          <div class="small-title">
-            OUR SPECIAL DAY
-          </div>
-
-          <h2>
-            Pasangan Pengantin
-          </h2>
-
-        </div>
-
-
-        <div class="couple-grid">
-
-
-          <div class="person reveal">
-
-            <div class="person-photo">
-
-              <img
-                src="${fotoURL(DATA.fotoPria)}"
-                alt="${escapeHTML(DATA.pria)}"
-                onerror="
-                  this.src='${fotoURL(DEFAULT_DATA.fotoPria)}'
-                "
-              >
-
-            </div>
-
-
-            <div class="person-name">
-              ${escapeHTML(DATA.pria)}
-            </div>
-
-
-            <div class="person-role">
-              Groom
-            </div>
-
-
-            <div class="person-parents">
-              Putra dari
-              <br>
-              ${escapeHTML(DATA.orangTuaPria)}
-            </div>
-
-          </div>
-
-
-          <div class="person reveal">
-
-            <div class="person-photo">
-
-              <img
-                src="${fotoURL(DATA.fotoWanita)}"
-                alt="${escapeHTML(DATA.wanita)}"
-                onerror="
-                  this.src='${fotoURL(DEFAULT_DATA.fotoWanita)}'
-                "
-              >
-
-            </div>
-
-
-            <div class="person-name">
-              ${escapeHTML(DATA.wanita)}
-            </div>
-
-
-            <div class="person-role">
-              Bride
-            </div>
-
-
-            <div class="person-parents">
-              Putri dari
-              <br>
-              ${escapeHTML(DATA.orangTuaWanita)}
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-function countdownHTML(){
-
-  return `
-
-    <section class="countdown-section">
-
-      <div class="container reveal">
-
-        <div class="section-title">
-
-          <div class="small-title">
-            SAVE THE MOMENT
-          </div>
-
-          <h2>
-            Menghitung Hari
-          </h2>
-
-        </div>
-
-
-        <div class="countdown">
-
-          <div class="count-item">
-
-            <div
-              id="days"
-              class="count-number"
-            >
-              0
-            </div>
-
-            <div class="count-label">
-              Days
-            </div>
-
-          </div>
-
-
-          <div class="count-item">
-
-            <div
-              id="hours"
-              class="count-number"
-            >
-              0
-            </div>
-
-            <div class="count-label">
-              Hours
-            </div>
-
-          </div>
-
-
-          <div class="count-item">
-
-            <div
-              id="minutes"
-              class="count-number"
-            >
-              0
-            </div>
-
-            <div class="count-label">
-              Minutes
-            </div>
-
-          </div>
-
-
-          <div class="count-item">
-
-            <div
-              id="seconds"
-              class="count-number"
-            >
-              0
-            </div>
-
-            <div class="count-label">
-              Seconds
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   CALENDAR
-========================================================= */
-
-function calendarHTML(){
-
-  const d =
-    new Date(
-      DATA.tanggal +
-      "T00:00:00"
-    );
-
-  const year =
-    d.getFullYear();
-
-  const month =
-    d.getMonth();
 
   const day =
-    d.getDate();
+    String(d.getDate()).padStart(2,"0");
 
-  const monthName =
-    d.toLocaleDateString(
-      "id-ID",
-      {
-        month:"long"
-      }
+  const month =
+    String(d.getMonth()+1).padStart(2,"0");
+
+  const year =
+    String(d.getFullYear()).slice(-2);
+
+  return `${day}.${month}.${year}`;
+}
+
+
+function namaHari(dateString){
+
+  const hari = [
+    "Minggu",
+    "Senin",
+    "Selasa",
+    "Rabu",
+    "Kamis",
+    "Jumat",
+    "Sabtu"
+  ];
+
+  const d =
+    new Date(
+      dateString + "T00:00:00"
     );
 
-  const first =
-    new Date(
-      year,
-      month,
-      1
-    ).getDay();
-
-  const mondayStart =
-    first === 0
-      ? 6
-      : first - 1;
-
-  const daysInMonth =
-    new Date(
-      year,
-      month + 1,
-      0
-    ).getDate();
-
-
-  let html = "";
-
-  const labels =
-    [
-      "S",
-      "S",
-      "R",
-      "K",
-      "J",
-      "S",
-      "M"
-    ];
-
-
-  labels.forEach(x=>{
-    html += `
-      <div style="
-        font-size:8px;
-        color:#999;
-      ">
-        ${x}
-      </div>
-    `;
-  });
-
-
-  for(
-    let i=0;
-    i<mondayStart;
-    i++
-  ){
-
-    html += `<div></div>`;
-
-  }
-
-
-  for(
-    let i=1;
-    i<=daysInMonth;
-    i++
-  ){
-
-    html += `
-
-      <div
-        class="${i === day ? "active" : ""}"
-      >
-        ${i}
-      </div>
-
-    `;
-
-  }
-
-
-  return `
-
-    <div class="calendar">
-
-      <div class="calendar-month">
-        ${monthName} ${year}
-      </div>
-
-      <div class="calendar-grid">
-
-        ${html}
-
-      </div>
-
-    </div>
-
-  `;
-
+  return hari[d.getDay()];
 }
 
 
 /* =========================================================
-   SAVE THE DATE
-========================================================= */
-
-function saveDateHTML(){
-
-  return `
-
-    <section class="save-date">
-
-      <div class="container">
-
-        <div class="section-title reveal">
-
-          <div class="small-title">
-            SAVE THE DATE
-          </div>
-
-          <h2>
-            Catat Tanggalnya
-          </h2>
-
-        </div>
-
-
-        <div class="save-layout">
-
-
-          <div class="reveal">
-
-            ${calendarHTML()}
-
-          </div>
-
-
-          <div class="event-info reveal">
-
-            <div class="event-type">
-              WEDDING RECEPTION
-            </div>
-
-
-            <h3>
-              ${escapeHTML(DATA.lokasi)}
-            </h3>
-
-
-            <p>
-
-              ${formatTanggal()}
-
-              <br>
-
-              ${escapeHTML(DATA.jam)}
-              - selesai
-
-              <br><br>
-
-              ${escapeHTML(DATA.alamat)}
-
-            </p>
-
-
-            ${
-              DATA.maps
-              ?
-              `
-                <a
-                  class="maps"
-                  href="${escapeAttr(DATA.maps)}"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  GOOGLE MAPS
-                </a>
-              `
-              :
-              ""
-            }
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-function galleryHTML(){
-
-  return `
-
-    <section class="gallery-section">
-
-      <div class="container">
-
-        <div class="section-title reveal">
-
-          <div class="small-title">
-            OUR MEMORIES
-          </div>
-
-          <h2>
-            Our Love Gallery
-          </h2>
-
-        </div>
-
-
-        <div class="gallery-intro reveal">
-
-          Every picture tells a story.
-          Every moment becomes a memory.
-          And every memory becomes a part
-          of our beautiful journey together.
-
-        </div>
-
-
-        <div class="gallery">
-
-
-          <div class="gallery-item g1 reveal">
-
-            <img
-              src="${fotoURL(DATA.foto1)}"
-              alt="Gallery 1"
-              loading="lazy"
-              onerror="
-                this.src='${fotoURL(DEFAULT_DATA.foto1)}'
-              "
-            >
-
-          </div>
-
-
-          <div class="gallery-item g2 reveal">
-
-            <img
-              src="${fotoURL(DATA.foto2)}"
-              alt="Gallery 2"
-              loading="lazy"
-              onerror="
-                this.src='${fotoURL(DEFAULT_DATA.foto2)}'
-              "
-            >
-
-          </div>
-
-
-          <div class="gallery-item g3 reveal">
-
-            <img
-              src="${fotoURL(DATA.foto3)}"
-              alt="Gallery 3"
-              loading="lazy"
-              onerror="
-                this.src='${fotoURL(DEFAULT_DATA.foto3)}'
-              "
-            >
-
-          </div>
-
-
-          <div class="gallery-item g4 reveal">
-
-            <img
-              src="${fotoURL(DATA.foto4)}"
-              alt="Gallery 4"
-              loading="lazy"
-              onerror="
-                this.src='${fotoURL(DEFAULT_DATA.foto4)}'
-              "
-            >
-
-          </div>
-
-
-          <div class="gallery-quote reveal">
-
-            “The chapter feels really good.
-            Every day, we continue to love each
-            other more and more.
-            Making memories with you is my
-            favorite thing to do.”
-
-          </div>
-
-
-        </div>
-
-
-        <div class="gallery-bottom">
-
-
-          <div class="gallery-item reveal">
-
-            <img
-              src="${fotoURL(DATA.foto3)}"
-              alt="Gallery 5"
-              loading="lazy"
-            >
-
-          </div>
-
-
-          <div class="gallery-item reveal">
-
-            <img
-              src="${fotoURL(DATA.foto4)}"
-              alt="Gallery 6"
-              loading="lazy"
-            >
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   STORY
-========================================================= */
-
-function storyHTML(){
-
-  return `
-
-    <section class="story">
-
-      <div class="container">
-
-        <div class="story-inner reveal">
-
-          <div class="small-title">
-            OUR STORY
-          </div>
-
-          <p>
-
-            ${escapeHTML(DATA.pesan)}
-
-          </p>
-
-          <br>
-
-          <p>
-
-            Being deeply loved by someone
-            gives you strength, while loving
-            someone deeply gives you courage.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   WEDDING GIFT
-========================================================= */
-
-function giftHTML(){
-
-  if(
-    !DATA.bank &&
-    !DATA.rekening
-  ){
-    return "";
-  }
-
-
-  return `
-
-    <section class="gift">
-
-      <div class="container reveal">
-
-        <div class="section-title">
-
-          <div class="small-title">
-            WEDDING GIFT
-          </div>
-
-          <h2>
-            Dengan Apresiasi
-          </h2>
-
-        </div>
-
-
-        <div class="gift-intro">
-
-          with appreciation, if you wish to
-          express gratitude, you may do so
-          through this information.
-
-        </div>
-
-
-        <div class="bank-card">
-
-          <div class="bank-name">
-            ${escapeHTML(DATA.bank)}
-          </div>
-
-
-          <div class="account-number">
-            ${escapeHTML(DATA.rekening)}
-          </div>
-
-
-          <div class="account-owner">
-            AN. ${escapeHTML(DATA.pemilikRekening)}
-          </div>
-
-
-          <button
-            class="copy-button"
-            onclick="copyRekening()"
-          >
-            SALIN
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   WISHES
-========================================================= */
-
-function wishesHTML(){
-
-  return `
-
-    <section class="wishes">
-
-      <div class="container">
-
-        <div class="section-title reveal">
-
-          <div class="small-title">
-            RSVP
-          </div>
-
-          <h2>
-            Ucapan & Doa
-          </h2>
-
-        </div>
-
-
-        <div class="wishes-form reveal">
-
-          <input
-            id="wishName"
-            class="form-input"
-            placeholder="Nama Anda"
-          >
-
-
-          <select
-            id="wishStatus"
-            class="form-select"
-          >
-
-            <option value="Hadir">
-              Hadir
-            </option>
-
-            <option value="Tidak Hadir">
-              Tidak Hadir
-            </option>
-
-          </select>
-
-
-          <textarea
-            id="wishMessage"
-            class="form-textarea"
-            placeholder="Tulis ucapan dan doa..."
-          ></textarea>
-
-
-          <button
-            class="send-wish"
-            onclick="sendWish()"
-          >
-            KIRIM UCAPAN 💌
-          </button>
-
-
-          <div class="wish-counter">
-
-            <span id="hadirCount">
-              0
-            </span>
-            Hadir
-
-            &nbsp; · &nbsp;
-
-            <span id="tidakCount">
-              0
-            </span>
-            Tidak Hadir
-
-          </div>
-
-
-          <div
-            id="wishesList"
-            class="wishes-list"
-          ></div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   CLOSING
-========================================================= */
-
-function closingHTML(){
-
-  return `
-
-    <section class="closing">
-
-      <div class="closing-bg">
-
-        <img
-          src="${fotoURL(DATA.fotoCover)}"
-          alt="Closing"
-        >
-
-      </div>
-
-
-      <div class="closing-overlay"></div>
-
-
-      <div class="closing-content reveal">
-
-        <div class="small-title">
-          WITH LOVE
-        </div>
-
-
-        <h2>
-          For being part
-          <br>
-          of our lives
-        </h2>
-
-
-        <p>
-
-          We were so blessed to have you
-          celebrate and be a part of our
-          wedding day.
-
-          <br><br>
-
-          See you!
-
-        </p>
-
-
-        <div class="closing-names">
-
-          ${escapeHTML(DATA.pria)}
-          &
-          ${escapeHTML(DATA.wanita)}
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   ESCAPE
-========================================================= */
-
-function escapeHTML(value){
-
-  if(value === undefined || value === null){
-    return "";
-  }
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-function escapeAttr(value){
-
-  return escapeHTML(value);
-
-}
-
-
-/* =========================================================
-   RENDER
+   RENDER DATA
 ========================================================= */
 
 function render(){
 
-  document.title =
-    DATA.pria +
-    " & " +
-    DATA.wanita +
-    " | Wedding Invitation";
+  const pria =
+    data.pria || "Nama Pria";
+
+  const wanita =
+    data.wanita || "Nama Wanita";
+
+  const guest =
+    ambilNamaTamu();
 
 
-  document.getElementById("app").innerHTML = `
+  /* OPENING */
 
-    ${openingHTML()}
+  document.getElementById(
+    "openPria"
+  ).textContent = pria;
 
-    <div class="page">
+  document.getElementById(
+    "openWanita"
+  ).textContent = wanita;
 
-      ${heroHTML()}
+  document.getElementById(
+    "openGuest"
+  ).textContent = guest;
 
-      ${introHTML()}
 
-      ${coupleHTML()}
+  /* HERO */
 
-      ${countdownHTML()}
+  document.getElementById(
+    "heroPria"
+  ).textContent = pria;
 
-      ${saveDateHTML()}
+  document.getElementById(
+    "heroWanita"
+  ).textContent = wanita;
 
-      ${galleryHTML()}
+  document.getElementById(
+    "heroDate"
+  ).textContent =
+    formatTanggal(data.tanggal);
 
-      ${storyHTML()}
 
-      ${giftHTML()}
+  /* FOTO COVER */
 
-      ${wishesHTML()}
+  const cover =
+    fotoGitHub(data.fotoCover);
 
-      ${closingHTML()}
+  if(cover){
 
-    </div>
+    document.getElementById(
+      "heroBg"
+    ).style.backgroundImage =
+      `url("${cover}")`;
 
-  `;
+    document.getElementById(
+      "closingBg"
+    ).style.backgroundImage =
+      `url("${cover}")`;
+
+  }
+
+
+  /* COUPLE */
+
+  document.getElementById(
+    "namaPria"
+  ).textContent = pria;
+
+  document.getElementById(
+    "namaWanita"
+  ).textContent = wanita;
+
+  document.getElementById(
+    "ortuPria"
+  ).textContent =
+    data.orangTuaPria ||
+    "Putra dari Bapak & Ibu";
+
+  document.getElementById(
+    "ortuWanita"
+  ).textContent =
+    data.orangTuaWanita ||
+    "Putri dari Bapak & Ibu";
+
+
+  const priaImg =
+    fotoGitHub(data.fotoPria);
+
+  const wanitaImg =
+    fotoGitHub(data.fotoWanita);
+
+
+  if(priaImg){
+
+    document.getElementById(
+      "fotoPria"
+    ).src = priaImg;
+
+  }
+
+
+  if(wanitaImg){
+
+    document.getElementById(
+      "fotoWanita"
+    ).src = wanitaImg;
+
+  }
+
+
+  /* COUNTDOWN / EVENT */
+
+  document.getElementById(
+    "eventDay"
+  ).textContent =
+    namaHari(data.tanggal);
+
+
+  document.getElementById(
+    "eventDate"
+  ).textContent =
+    formatTanggal(data.tanggal);
+
+
+  document.getElementById(
+    "eventTime"
+  ).textContent =
+    `${data.jam || "09:00"} WIB - selesai`;
+
+
+  document.getElementById(
+    "eventLocation"
+  ).textContent =
+    data.lokasi || "Nama Lokasi";
+
+
+  document.getElementById(
+    "eventAddress"
+  ).textContent =
+    data.alamat || "Alamat Acara";
+
+
+  const maps =
+    document.getElementById(
+      "mapsLink"
+    );
+
+
+  if(data.maps){
+
+    maps.href = data.maps;
+
+  }else{
+
+    maps.style.display =
+      "none";
+
+  }
+
+
+  /* GALLERY */
+
+  const galleryFiles = [
+
+    data.fotoCover,
+
+    data.foto1,
+
+    data.foto2,
+
+    data.foto3,
+
+    data.foto4
+
+  ];
+
+
+  galleryFiles.forEach(
+    (file,index)=>{
+
+      const img =
+        document.getElementById(
+          "gallery"+(index+1)
+        );
+
+      const url =
+        fotoGitHub(file);
+
+      if(url){
+
+        img.src = url;
+
+      }
+
+    }
+  );
+
+
+  /* STORY */
+
+  document.getElementById(
+    "storyPhoto"
+  ).src =
+    fotoGitHub(
+      data.foto1 ||
+      data.fotoCover
+    );
+
+
+  document.getElementById(
+    "storyText"
+  ).textContent =
+    data.pesan ||
+    "Setiap pertemuan memiliki cerita.";
+
+
+  /* GIFT */
+
+  document.getElementById(
+    "bankName"
+  ).textContent =
+    data.bank || "Bank";
+
+
+  document.getElementById(
+    "rekening"
+  ).textContent =
+    data.rekening || "000000000";
+
+
+  document.getElementById(
+    "pemilik"
+  ).textContent =
+    data.pemilikRekening ||
+    "Nama Pemilik";
+
+
+  /* CLOSING */
+
+  document.getElementById(
+    "closingPria"
+  ).textContent =
+    pria;
+
+
+  document.getElementById(
+    "closingWanita"
+  ).textContent =
+    wanita;
+
+
+  /* MUSIC */
+
+  if(data.musik){
+
+    document.getElementById(
+      "music"
+    ).src =
+      fotoGitHub(data.musik);
+
+  }
 
 }
 
@@ -2295,26 +2040,99 @@ function render(){
    OPEN INVITATION
 ========================================================= */
 
-function openInvitation(){
+function bukaUndangan(){
 
-  const opening =
-    document.getElementById("opening");
+  const envelope =
+    document.getElementById(
+      "envelope"
+    );
 
-  if(!opening) return;
-
-  opening.classList.add("hide");
-
-  document.body.classList.remove("locked");
+  envelope.classList.add("open");
 
   setTimeout(()=>{
 
-    opening.remove();
+    document.getElementById(
+      "opening"
+    ).classList.add("hide");
 
-  },1000);
+    document.body.style.overflow =
+      "auto";
 
-  if(DATA.musik){
+    mulaiMusik();
 
-    startMusic();
+  },700);
+
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+let musicStarted = false;
+
+
+function mulaiMusik(){
+
+  const music =
+    document.getElementById(
+      "music"
+    );
+
+  if(!music.src){
+    return;
+  }
+
+  music.volume = .45;
+
+  music.play()
+    .then(()=>{
+
+      musicStarted = true;
+
+      document
+        .getElementById("musicBtn")
+        .classList.add("playing");
+
+    })
+    .catch(()=>{});
+
+}
+
+
+function toggleMusic(){
+
+  const music =
+    document.getElementById(
+      "music"
+    );
+
+  const btn =
+    document.getElementById(
+      "musicBtn"
+    );
+
+
+  if(!music.src){
+    return;
+  }
+
+
+  if(music.paused){
+
+    music.play();
+
+    btn.classList.add(
+      "playing"
+    );
+
+  }else{
+
+    music.pause();
+
+    btn.classList.remove(
+      "playing"
+    );
 
   }
 
@@ -2325,72 +2143,97 @@ function openInvitation(){
    COUNTDOWN
 ========================================================= */
 
-function startCountdown(){
-
-  const target =
-    dateObject().getTime();
-
+function mulaiCountdown(){
 
   function update(){
 
-    let diff =
-      target - Date.now();
+    const target =
+      new Date(
+        `${data.tanggal}T${data.jam || "09:00"}:00`
+      ).getTime();
+
+    const now =
+      new Date().getTime();
+
+    const distance =
+      target-now;
 
 
-    if(diff < 0){
-      diff = 0;
+    if(distance <= 0){
+
+      document.getElementById(
+        "days"
+      ).textContent = "00";
+
+      document.getElementById(
+        "hours"
+      ).textContent = "00";
+
+      document.getElementById(
+        "minutes"
+      ).textContent = "00";
+
+      document.getElementById(
+        "seconds"
+      ).textContent = "00";
+
+      return;
+
     }
 
 
     const days =
       Math.floor(
-        diff / 86400000
+        distance /
+        (1000*60*60*24)
       );
 
 
     const hours =
       Math.floor(
-        (diff % 86400000) /
-        3600000
+        (distance %
+        (1000*60*60*24)) /
+        (1000*60*60)
       );
 
 
     const minutes =
       Math.floor(
-        (diff % 3600000) /
-        60000
+        (distance %
+        (1000*60*60)) /
+        (1000*60)
       );
 
 
     const seconds =
       Math.floor(
-        (diff % 60000) /
+        (distance %
+        (1000*60)) /
         1000
       );
 
 
-    const d =
-      document.getElementById("days");
-
-    const h =
-      document.getElementById("hours");
-
-    const m =
-      document.getElementById("minutes");
-
-    const s =
-      document.getElementById("seconds");
+    document.getElementById(
+      "days"
+    ).textContent =
+      String(days).padStart(2,"0");
 
 
-    if(d) d.textContent = days;
-
-    if(h) h.textContent =
+    document.getElementById(
+      "hours"
+    ).textContent =
       String(hours).padStart(2,"0");
 
-    if(m) m.textContent =
+
+    document.getElementById(
+      "minutes"
+    ).textContent =
       String(minutes).padStart(2,"0");
 
-    if(s) s.textContent =
+
+    document.getElementById(
+      "seconds"
+    ).textContent =
       String(seconds).padStart(2,"0");
 
   }
@@ -2407,88 +2250,82 @@ function startCountdown(){
 
 
 /* =========================================================
-   COPY REKENING
+   SCROLL REVEAL
 ========================================================= */
 
-function copyRekening(){
+function jalankanAnimasi(){
 
-  const nomor =
-    DATA.rekening || "";
-
-  if(!nomor) return;
-
-
-  if(
-    navigator.clipboard &&
-    navigator.clipboard.writeText
-  ){
-
-    navigator.clipboard
-      .writeText(nomor)
-      .then(()=>{
-
-        alert(
-          "Nomor rekening berhasil disalin."
-        );
-
-      });
-
-  }else{
-
-    alert(
-      "Nomor rekening: " +
-      nomor
+  const elements =
+    document.querySelectorAll(
+      ".reveal, .reveal-left, .reveal-right, .zoom-reveal"
     );
 
-  }
+
+  const observer =
+    new IntersectionObserver(
+      entries=>{
+
+        entries.forEach(
+          entry=>{
+
+            if(entry.isIntersecting){
+
+              entry.target.classList.add(
+                "show"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold:.12
+      }
+    );
+
+
+  elements.forEach(
+    el=>observer.observe(el)
+  );
 
 }
 
 
 /* =========================================================
-   MUSIC
+   COPY REKENING
 ========================================================= */
 
-let audio = null;
+function salinRekening(){
 
-function startMusic(){
+  const rekening =
+    data.rekening || "";
 
-  if(
-    !DATA.musik ||
-    audio
-  ){
+  if(!rekening){
     return;
   }
 
 
-  audio =
-    new Audio(
-      fotoURL(DATA.musik)
-    );
-
-
-  audio.loop = true;
-
-  audio.volume = .45;
-
-
-  audio.play()
+  navigator.clipboard
+    .writeText(rekening)
     .then(()=>{
 
-      const btn =
-        document.getElementById(
-          "musicButton"
-        );
-
-      if(btn){
-        btn.style.display =
-          "block";
-      }
+      alert(
+        "Nomor rekening berhasil disalin."
+      );
 
     })
     .catch(()=>{
 
-      audio = null;
+      alert(
+        "Nomor rekening: " +
+        rekening
+      );
 
     });
 
@@ -2496,107 +2333,30 @@ function startMusic(){
 
 
 /* =========================================================
-   MUSIC BUTTON
+   UCAPAN
 ========================================================= */
 
-document
-  .getElementById("musicButton")
-  .addEventListener(
-    "click",
-    ()=>{
+function kirimUcapan(){
 
-      if(!audio){
-
-        startMusic();
-
-        return;
-
-      }
-
-
-      if(audio.paused){
-
-        audio.play();
-
-      }else{
-
-        audio.pause();
-
-      }
-
-    }
-  );
-
-
-/* =========================================================
-   WISHES
-   LOCAL STORAGE UNTUK PROTOTYPE
-========================================================= */
-
-function wishesKey(){
-
-  return "UCAPAN_" +
-    (
-      DATA.idPelanggan ||
-      DATA.pria +
-      DATA.wanita
-    );
-
-}
-
-
-function getWishes(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(
-        wishesKey()
-      ) || "[]"
-    );
-
-  }catch(e){
-
-    return [];
-
-  }
-
-}
-
-
-function saveWishes(list){
-
-  localStorage.setItem(
-    wishesKey(),
-    JSON.stringify(list)
-  );
-
-}
-
-
-function sendWish(){
-
-  const name =
-    document
-      .getElementById("wishName")
-      .value
-      .trim();
+  const nama =
+    document.getElementById(
+      "wishName"
+    ).value.trim();
 
 
   const status =
-    document
-      .getElementById("wishStatus")
-      .value;
+    document.getElementById(
+      "wishStatus"
+    ).value;
 
 
-  const message =
-    document
-      .getElementById("wishMessage")
-      .value
-      .trim();
+  const pesan =
+    document.getElementById(
+      "wishMessage"
+    ).value.trim();
 
 
-  if(!name || !message){
+  if(!nama || !pesan){
 
     alert(
       "Nama dan ucapan wajib diisi."
@@ -2607,175 +2367,147 @@ function sendWish(){
   }
 
 
-  const list =
-    getWishes();
+  const key =
+    "UCAPAN_" +
+    (
+      data.idPelanggan ||
+      "DEFAULT"
+    );
 
 
-  list.unshift({
+  const daftar =
+    JSON.parse(
+      localStorage.getItem(key)
+      ||
+      "[]"
+    );
 
-    name:name,
+
+  daftar.unshift({
+
+    nama:nama,
 
     status:status,
 
-    message:message,
+    pesan:pesan,
 
-    time:new Date()
-      .toLocaleString("id-ID")
+    waktu:new Date()
+      .toLocaleString(
+        "id-ID"
+      )
 
   });
 
 
-  saveWishes(list);
+  localStorage.setItem(
+    key,
+    JSON.stringify(daftar)
+  );
 
 
-  document
-    .getElementById("wishName")
-    .value = "";
+  document.getElementById(
+    "wishName"
+  ).value = "";
 
 
-  document
-    .getElementById("wishMessage")
-    .value = "";
+  document.getElementById(
+    "wishMessage"
+  ).value = "";
 
 
-  renderWishes();
+  tampilkanUcapan();
+
+
+  alert(
+    "Terima kasih atas ucapan dan doanya ❤️"
+  );
 
 }
 
 
 /* =========================================================
-   RENDER WISHES
+   TAMPILKAN UCAPAN
 ========================================================= */
 
-function renderWishes(){
+function tampilkanUcapan(){
 
-  const list =
-    getWishes();
-
-
-  let hadir = 0;
-
-  let tidak = 0;
-
-
-  list.forEach(item=>{
-
-    if(item.status === "Hadir"){
-      hadir++;
-    }else{
-      tidak++;
-    }
-
-  });
-
-
-  const hadirEl =
-    document.getElementById(
-      "hadirCount"
+  const key =
+    "UCAPAN_" +
+    (
+      data.idPelanggan ||
+      "DEFAULT"
     );
 
 
-  const tidakEl =
-    document.getElementById(
-      "tidakCount"
+  const daftar =
+    JSON.parse(
+      localStorage.getItem(key)
+      ||
+      "[]"
     );
-
-
-  if(hadirEl){
-    hadirEl.textContent =
-      hadir;
-  }
-
-
-  if(tidakEl){
-    tidakEl.textContent =
-      tidak;
-  }
 
 
   const container =
     document.getElementById(
-      "wishesList"
+      "wishList"
     );
 
 
-  if(!container) return;
+  container.innerHTML = "";
 
 
-  if(!list.length){
+  daftar.forEach(
+    item=>{
 
-    container.innerHTML = "";
+      const div =
+        document.createElement(
+          "div"
+        );
 
-    return;
 
-  }
+      div.className =
+        "wish reveal show";
 
 
-  container.innerHTML =
-    list
-      .slice(0,30)
-      .map(item=>`
+      div.innerHTML = `
 
-        <div class="wish">
+        <strong>
+          ${escapeHTML(item.nama)}
+        </strong>
 
-          <strong>
-            ${escapeHTML(item.name)}
-          </strong>
+        <small>
+          ${escapeHTML(item.status)}
+        </small>
 
-          <span>
-            ${escapeHTML(item.status)}
-            ·
-            ${escapeHTML(item.time)}
-          </span>
+        <p>
+          ${escapeHTML(item.pesan)}
+        </p>
 
-          <p>
-            ${escapeHTML(item.message)}
-          </p>
+      `;
 
-        </div>
 
-      `)
-      .join("");
+      container.appendChild(
+        div
+      );
+
+    }
+  );
 
 }
 
 
 /* =========================================================
-   SCROLL REVEAL
+   SECURITY TEXT
 ========================================================= */
 
-function setupReveal(){
+function escapeHTML(text){
 
-  const observer =
-    new IntersectionObserver(
-      entries=>{
-
-        entries.forEach(entry=>{
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add(
-              "show"
-            );
-
-          }
-
-        });
-
-      },
-      {
-        threshold:.12
-      }
-    );
-
-
-  document
-    .querySelectorAll(".reveal")
-    .forEach(el=>{
-
-      observer.observe(el);
-
-    });
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
@@ -2784,13 +2516,45 @@ function setupReveal(){
    START
 ========================================================= */
 
+document.body.style.overflow =
+  "hidden";
+
+
 render();
 
-startCountdown();
+mulaiCountdown();
 
-renderWishes();
+tampilkanUcapan();
 
-setupReveal();
+jalankanAnimasi();
+
+
+/* Parallax ringan */
+
+window.addEventListener(
+  "scroll",
+  ()=>{
+
+    const scroll =
+      window.scrollY;
+
+    const hero =
+      document.querySelector(
+        ".hero-bg"
+      );
+
+    if(hero){
+
+      hero.style.transform =
+        `scale(1.03) translateY(${scroll * .08}px)`;
+
+    }
+
+  },
+  {
+    passive:true
+  }
+);
 
 </script>
 
