@@ -7,6 +7,7 @@
 <title>Undangan Pernikahan</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -44,9 +45,11 @@ body{
 .cover{
   min-height:100vh;
   position:relative;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   text-align:center;
   padding:20px;
 
@@ -63,28 +66,44 @@ body{
 
 .cover:after{
   content:"";
+
   position:absolute;
+
   width:350px;
   height:350px;
+
   border-radius:50%;
+
   background:rgba(212,175,55,.12);
+
   filter:blur(45px);
-  animation:lightMove 6s infinite alternate ease-in-out;
+
+  animation:
+    lightMove
+    6s
+    infinite
+    alternate
+    ease-in-out;
 }
 
 @keyframes lightMove{
+
   from{
     transform:translate(-100px,-100px);
   }
+
   to{
     transform:translate(100px,100px);
   }
+
 }
 
 .cover-content{
   position:relative;
   z-index:3;
+
   width:100%;
+
   padding:40px 20px;
 
   border:1px solid rgba(212,175,55,.7);
@@ -93,31 +112,47 @@ body{
 
   backdrop-filter:blur(5px);
 
-  animation:coverIn 1.5s ease;
+  animation:
+    coverIn
+    1.5s
+    ease;
 }
 
 @keyframes coverIn{
+
   from{
     opacity:0;
-    transform:scale(.75) translateY(50px);
+    transform:
+      scale(.75)
+      translateY(50px);
   }
 
   to{
     opacity:1;
-    transform:scale(1) translateY(0);
+    transform:
+      scale(1)
+      translateY(0);
   }
+
 }
 
 .small{
   color:var(--gold2);
+
   font-size:12px;
+
   letter-spacing:5px;
+
   margin-bottom:20px;
 
-  animation:fadeDown 1.5s ease;
+  animation:
+    fadeDown
+    1.5s
+    ease;
 }
 
 @keyframes fadeDown{
+
   from{
     opacity:0;
     transform:translateY(-30px);
@@ -127,17 +162,26 @@ body{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 .cover h1{
+
   font-size:40px;
+
   line-height:1.2;
+
   font-weight:normal;
 
-  animation:nameZoom 1.8s ease;
+  animation:
+    nameZoom
+    1.8s
+    ease;
+
 }
 
 @keyframes nameZoom{
+
   from{
     opacity:0;
     transform:scale(.3);
@@ -147,18 +191,28 @@ body{
     opacity:1;
     transform:scale(1);
   }
+
 }
 
 .cover-date{
+
   margin-top:18px;
+
   color:var(--gold2);
+
   letter-spacing:4px;
+
   font-size:14px;
 
-  animation:fadeUp 1.5s ease;
+  animation:
+    fadeUp
+    1.5s
+    ease;
+
 }
 
 .cover-photo{
+
   width:145px;
   height:145px;
 
@@ -173,15 +227,20 @@ body{
   display:block;
 
   box-shadow:
-    0 0 0 8px rgba(212,175,55,.12),
-    0 0 35px rgba(212,175,55,.35);
+    0 0 0 8px
+    rgba(212,175,55,.12),
+
+    0 0 35px
+    rgba(212,175,55,.35);
 
   animation:
     photoIn 1.5s ease,
     photoFloat 4s 1.5s infinite ease-in-out;
+
 }
 
 @keyframes photoIn{
+
   from{
     opacity:0;
     transform:scale(.3);
@@ -191,9 +250,11 @@ body{
     opacity:1;
     transform:scale(1);
   }
+
 }
 
 @keyframes photoFloat{
+
   0%,100%{
     transform:translateY(0);
   }
@@ -201,9 +262,11 @@ body{
   50%{
     transform:translateY(-10px);
   }
+
 }
 
 .open-button{
+
   display:inline-block;
 
   padding:14px 28px;
@@ -220,19 +283,30 @@ body{
 
   letter-spacing:2px;
 
-  background:rgba(212,175,55,.12);
+  background:
+    rgba(212,175,55,.12);
 
-  animation:pulse 2s infinite;
+  animation:
+    pulse
+    2s
+    infinite;
+
 }
 
 @keyframes pulse{
+
   0%,100%{
-    box-shadow:0 0 0 0 rgba(212,175,55,.4);
+    box-shadow:
+      0 0 0 0
+      rgba(212,175,55,.4);
   }
 
   50%{
-    box-shadow:0 0 0 12px rgba(212,175,55,0);
+    box-shadow:
+      0 0 0 12px
+      rgba(212,175,55,0);
   }
+
 }
 
 /* =========================
@@ -240,11 +314,17 @@ body{
 ========================= */
 
 .ornament{
+
   position:absolute;
+
   z-index:2;
+
   color:var(--gold);
+
   font-size:22px;
+
   opacity:.7;
+
 }
 
 .ornament1{
@@ -272,23 +352,33 @@ body{
 }
 
 @keyframes float1{
+
   0%,100%{
-    transform:translateY(0) rotate(0);
+    transform:
+      translateY(0)
+      rotate(0);
   }
 
   50%{
-    transform:translateY(-25px) rotate(20deg);
+    transform:
+      translateY(-25px)
+      rotate(20deg);
   }
+
 }
 
 @keyframes float2{
+
   0%,100%{
     transform:translate(0,0);
   }
 
   50%{
-    transform:translate(15px,-20px) rotate(-15deg);
+    transform:
+      translate(15px,-20px)
+      rotate(-15deg);
   }
+
 }
 
 /* =========================
@@ -296,11 +386,18 @@ body{
 ========================= */
 
 .marquee{
+
   overflow:hidden;
+
   white-space:nowrap;
 
-  border-top:1px solid rgba(212,175,55,.35);
-  border-bottom:1px solid rgba(212,175,55,.35);
+  border-top:
+    1px solid
+    rgba(212,175,55,.35);
+
+  border-bottom:
+    1px solid
+    rgba(212,175,55,.35);
 
   padding:14px 0;
 
@@ -309,18 +406,25 @@ body{
   font-size:12px;
 
   letter-spacing:3px;
+
 }
 
 .marquee span{
+
   display:inline-block;
 
   padding-left:100%;
 
   animation:
-    marquee 18s linear infinite;
+    marquee
+    18s
+    linear
+    infinite;
+
 }
 
 @keyframes marquee{
+
   from{
     transform:translateX(0);
   }
@@ -328,6 +432,7 @@ body{
   to{
     transform:translateX(-100%);
   }
+
 }
 
 /* =========================
@@ -335,34 +440,55 @@ body{
 ========================= */
 
 section{
+
   padding:70px 25px;
+
   text-align:center;
+
 }
 
 .label{
+
   color:var(--gold);
+
   font-size:10px;
+
   letter-spacing:4px;
+
   margin-bottom:14px;
+
 }
 
 h2{
+
   font-size:30px;
+
   font-weight:normal;
+
 }
 
 .divider{
+
   width:60px;
+
   height:1px;
+
   background:var(--gold);
+
   margin:20px auto;
+
 }
 
 p{
+
   font-family:Arial,sans-serif;
+
   color:#aaa;
+
   font-size:13px;
+
   line-height:1.9;
+
 }
 
 /* =========================
@@ -370,16 +496,23 @@ p{
 ========================= */
 
 .reveal{
+
   opacity:0;
+
   transform:translateY(60px);
+
   transition:
     opacity 1s ease,
     transform 1s ease;
+
 }
 
 .reveal.show{
+
   opacity:1;
+
   transform:translateY(0);
+
 }
 
 /* =========================
@@ -387,19 +520,24 @@ p{
 ========================= */
 
 .couple{
+
   background:
     radial-gradient(
       circle,
       #191919,
       #080808
     );
+
 }
 
 .person{
+
   margin:25px 0;
+
 }
 
 .person img{
+
   width:130px;
   height:130px;
 
@@ -409,10 +547,16 @@ p{
 
   border:3px solid var(--gold);
 
-  animation:personFloat 4s infinite ease-in-out;
+  animation:
+    personFloat
+    4s
+    infinite
+    ease-in-out;
+
 }
 
 @keyframes personFloat{
+
   0%,100%{
     transform:translateY(0);
   }
@@ -420,24 +564,37 @@ p{
   50%{
     transform:translateY(-8px);
   }
+
 }
 
 .person-name{
+
   color:var(--gold2);
+
   font-size:27px;
+
   margin-top:15px;
+
 }
 
 .person-role{
+
   margin-top:7px;
+
   color:#999;
+
   font-family:Arial,sans-serif;
+
   font-size:11px;
+
 }
 
 .and{
+
   font-size:35px;
+
   color:var(--gold);
+
 }
 
 /* =========================
@@ -445,53 +602,50 @@ p{
 ========================= */
 
 .countdown{
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:7px;
+
 }
 
 .time{
+
   background:#111;
-  border:1px solid rgba(212,175,55,.35);
+
+  border:
+    1px solid
+    rgba(212,175,55,.35);
+
   padding:15px 3px;
 
-  animation:timeFloat 2s infinite ease-in-out;
-}
-
-.time:nth-child(2){
-  animation-delay:.2s;
-}
-
-.time:nth-child(3){
-  animation-delay:.4s;
-}
-
-.time:nth-child(4){
-  animation-delay:.6s;
-}
-
-@keyframes timeFloat{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-4px);
-  }
 }
 
 .time strong{
+
   display:block;
+
   color:var(--gold2);
+
   font-size:21px;
+
 }
 
 .time small{
+
   display:block;
+
   color:#777;
+
   margin-top:5px;
+
   font-family:Arial,sans-serif;
+
   font-size:9px;
+
 }
 
 /* =========================
@@ -499,40 +653,58 @@ p{
 ========================= */
 
 .event{
+
   background:#0d0d0d;
+
 }
 
 .event-card{
+
   margin:20px 0;
+
   padding:30px 18px;
 
-  border:1px solid rgba(212,175,55,.35);
+  border:
+    1px solid
+    rgba(212,175,55,.35);
 
   background:#111;
 
   transition:.4s;
+
 }
 
 .event-card:hover{
+
   transform:translateY(-7px);
+
   border-color:var(--gold);
+
 }
 
 .event-card h3{
+
   color:var(--gold);
+
   font-size:24px;
+
   font-weight:normal;
+
   margin-bottom:15px;
+
 }
 
 .map{
+
   display:inline-block;
 
   margin-top:18px;
 
   padding:10px 20px;
 
-  border:1px solid var(--gold);
+  border:
+    1px solid
+    var(--gold);
 
   border-radius:25px;
 
@@ -543,6 +715,7 @@ p{
   font-family:Arial,sans-serif;
 
   font-size:11px;
+
 }
 
 /* =========================
@@ -550,22 +723,32 @@ p{
 ========================= */
 
 .gallery-grid{
+
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:8px;
+
 }
 
 .gallery-grid img{
+
   width:100%;
+
   height:190px;
 
   object-fit:cover;
 
   transition:.6s;
+
 }
 
 .gallery-grid img:hover{
+
   transform:scale(1.05);
+
 }
 
 /* =========================
@@ -573,20 +756,26 @@ p{
 ========================= */
 
 .rsvp{
+
   background:#101010;
+
 }
 
 input,
 select,
 textarea{
+
   width:100%;
 
   margin-top:7px;
+
   margin-bottom:15px;
 
   padding:13px;
 
-  border:1px solid #333;
+  border:
+    1px solid
+    #333;
 
   border-radius:5px;
 
@@ -597,10 +786,13 @@ textarea{
   outline:none;
 
   font-family:Arial,sans-serif;
+
 }
 
 label{
+
   display:block;
+
   text-align:left;
 
   color:#aaa;
@@ -608,19 +800,25 @@ label{
   font-family:Arial,sans-serif;
 
   font-size:11px;
+
 }
 
 input:focus,
 select:focus,
 textarea:focus{
+
   border-color:var(--gold);
+
 }
 
 textarea{
+
   min-height:90px;
+
 }
 
 .submit{
+
   width:100%;
 
   padding:14px;
@@ -634,6 +832,7 @@ textarea{
   color:#000;
 
   font-weight:bold;
+
 }
 
 /* =========================
@@ -641,36 +840,50 @@ textarea{
 ========================= */
 
 .gift-box{
+
   padding:30px 20px;
 
   background:#111;
 
-  border:1px solid rgba(212,175,55,.35);
+  border:
+    1px solid
+    rgba(212,175,55,.35);
 
   font-family:Arial,sans-serif;
 
   color:#aaa;
 
   line-height:1.8;
+
 }
 
 .bank{
+
   color:var(--gold);
+
   font-size:20px;
+
 }
 
 .number{
+
   color:white;
+
   font-size:22px;
+
   letter-spacing:2px;
+
 }
 
 .copy{
+
   margin-top:15px;
 
   padding:10px 18px;
 
-  border:1px solid var(--gold);
+  border:
+    1px solid
+    var(--gold);
 
   border-radius:25px;
 
@@ -678,7 +891,6 @@ textarea{
 
   color:var(--gold);
 
-  cursor:pointer;
 }
 
 /* =========================
@@ -686,19 +898,31 @@ textarea{
 ========================= */
 
 footer{
+
   padding:50px 20px;
+
   text-align:center;
-  border-top:1px solid rgba(212,175,55,.2);
+
+  border-top:
+    1px solid
+    rgba(212,175,55,.2);
+
 }
 
 footer h2{
+
   color:var(--gold);
+
   font-size:22px;
+
 }
 
 footer p{
+
   margin-top:10px;
+
   font-size:11px;
+
 }
 
 /* =========================
@@ -706,17 +930,22 @@ footer p{
 ========================= */
 
 .music{
+
   position:fixed;
 
   right:18px;
+
   bottom:18px;
 
   width:50px;
+
   height:50px;
 
   border-radius:50%;
 
-  border:1px solid var(--gold);
+  border:
+    1px solid
+    var(--gold);
 
   background:#111;
 
@@ -725,36 +954,60 @@ footer p{
   z-index:100;
 
   font-size:18px;
+
 }
 
 .music.playing{
-  animation:spin 3s linear infinite;
+
+  animation:
+    spin
+    3s
+    linear
+    infinite;
+
 }
 
 @keyframes spin{
+
   to{
     transform:rotate(360deg);
   }
+
 }
 
 /* =========================
-   BINTANG JATUH
+   BINTANG
 ========================= */
 
 .star{
+
   position:fixed;
+
   top:-20px;
+
   color:var(--gold);
+
   z-index:1;
+
   pointer-events:none;
 
-  animation:starFall linear forwards;
+  animation:
+    starFall
+    linear
+    forwards;
+
 }
 
 @keyframes starFall{
+
   0%{
-    transform:translateY(-30px) rotate(0);
+
+    transform:
+      translateY(-30px)
+      rotate(0);
+
     opacity:0;
+
   }
 
   10%{
@@ -762,166 +1015,254 @@ footer p{
   }
 
   100%{
+
     transform:
       translateY(110vh)
       translateX(80px)
       rotate(360deg);
 
     opacity:0;
+
   }
+
 }
+
 </style>
 </head>
-
 
 <body>
 
 <div class="container">
 
-
 <!-- =====================================================
-     DATA PELANGGAN
+     DEFAULT DATA
      
-     ⭐⭐ CUKUP UBAH BAGIAN INI ⭐⭐
+     Data ini hanya cadangan.
+     Kalau ADMIN sudah menyimpan data,
+     data ADMIN akan otomatis dipakai.
 ===================================================== -->
 
 <script>
 
-const DATA = {
+const DEFAULT_DATA = {
 
-  /* =========================
-     NAMA PENGANTIN
-  ========================= */
+  pria:"Febriyanda",
 
-  pria:
-    "Febriyanda",
+  wanita:"Zaida Amala",
 
-  wanita:
-    "Zaida Amala",
+  tanggal:"27 Juli 2027",
 
+  tanggalSingkat:"27 • 07 • 2027",
 
-  /* =========================
-     TANGGAL
-  ========================= */
+  countdown:"2027-07-27T09:00:00+07:00",
 
-  tanggal:
-    "27 Juli 2027",
+  jam:"09:00",
 
-  tanggalSingkat:
-    "27 • 07 • 2027",
+  jamAkad:"09.00 WIB – Selesai",
 
-  countdown:
-    "2027-07-27T09:00:00+07:00",
+  jamResepsi:"09.00 WIB – Selesai",
 
+  lokasi:"Simpang Uning Niken",
 
-  /* =========================
-     WAKTU
-  ========================= */
-
-  jamAkad:
-    "09.00 WIB – Selesai",
-
-  jamResepsi:
-    "09.00 WIB – Selesai",
-
-
-  /* =========================
-     LOKASI
-  ========================= */
-
-  lokasi:
-    "Simpang Uning Niken",
-
-  alamat:
-    "Kecamatan Bies, Aceh Tengah, Aceh",
+  alamat:"Kecamatan Bies, Aceh Tengah, Aceh",
 
   maps:
-    "https://www.google.com/maps/search/?api=1&query=Simpang+Uning+Niken+Aceh+Tengah",
-
-
-  /* =========================
-     ORANG TUA
-  ========================= */
+  "https://www.google.com/maps/search/?api=1&query=Simpang+Uning+Niken+Aceh+Tengah",
 
   orangTuaPria:
-    "Putra dari Bapak & Ibu",
+  "Putra dari Bapak & Ibu",
 
   orangTuaWanita:
-    "Putri dari Bapak & Ibu",
+  "Putri dari Bapak & Ibu",
 
+  whatsapp:"6281234567890",
 
-  /* =========================
-     WHATSAPP
-  ========================= */
+  bank:"Bank BCA",
 
-  whatsapp:
-    "6281234567890",
+  rekening:"1234567890",
 
+  pemilikRekening:"Febriyanda",
 
-  /* =========================
-     REKENING
-  ========================= */
+  fotoCover:"IMG_7063.jpeg",
 
-  bank:
-    "Bank BCA",
+  fotoPria:"IMG_7063.jpeg",
 
-  rekening:
-    "1234567890",
+  fotoWanita:"IMG_7063.jpeg",
 
-  pemilikRekening:
-    "Febriyanda",
+  foto1:"IMG_7063.jpeg",
 
+  foto2:"IMG_7063.jpeg",
 
-  /* ==================================================
-     FOTO
-     
-     Kalau foto ada di repository GitHub:
-     
-     contoh:
-     foto1: "foto1.jpg"
-     
-     Tidak perlu menulis URL panjang.
-     
-     Nanti sistem otomatis mengambil dari GitHub.
-  ================================================== */
+  foto3:"IMG_7063.jpeg",
 
-  fotoCover:
-    "IMG_7063.jpeg",
+  foto4:"IMG_7063.jpeg",
 
-  fotoPria:
-    "IMG_7063.jpeg",
+  musik:"",
 
-  fotoWanita:
-    "IMG_7063.jpeg",
-
-  foto1:
-    "IMG_7063.jpeg",
-
-  foto2:
-    "IMG_7063.jpeg",
-
-  foto3:
-    "IMG_7063.jpeg",
-
-  foto4:
-    "IMG_7063.jpeg",
-
-
-  /* =========================
-     MUSIK
-     
-     Upload file musik.mp3
-     ke repository.
-
-     Lalu tulis:
-
-     musik: "musik.mp3"
-  ========================= */
-
-  musik:
-    ""
+  pesan:
+  "Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami."
 
 };
+
+
+/* =====================================================
+   AMBIL DATA DARI ADMIN
+===================================================== */
+
+let DATA = DEFAULT_DATA;
+
+try{
+
+  const dataTersimpan =
+    localStorage.getItem("DATA_UNDANGAN");
+
+  if(dataTersimpan){
+
+    const dataAdmin =
+      JSON.parse(dataTersimpan);
+
+    DATA = {
+      ...DEFAULT_DATA,
+      ...dataAdmin
+    };
+
+  }
+
+}catch(error){
+
+  console.log(
+    "Data Admin belum tersedia."
+  );
+
+}
+
+
+/* =====================================================
+   FORMAT TANGGAL DARI ADMIN
+===================================================== */
+
+function formatTanggalIndonesia(value){
+
+  if(!value){
+    return DEFAULT_DATA.tanggal;
+  }
+
+  const date =
+    new Date(value + "T00:00:00");
+
+  if(isNaN(date.getTime())){
+    return value;
+  }
+
+  const bulan = [
+
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+
+  ];
+
+  return (
+
+    date.getDate() +
+    " " +
+    bulan[date.getMonth()] +
+    " " +
+    date.getFullYear()
+
+  );
+
+}
+
+
+/* =====================================================
+   BUAT DATA TANGGAL
+===================================================== */
+
+if(DATA.tanggal){
+
+  if(
+    DATA.tanggal.includes("-") &&
+    DATA.tanggal.length === 10
+  ){
+
+    DATA.tanggal =
+      formatTanggalIndonesia(
+        DATA.tanggal
+      );
+
+  }
+
+}
+
+
+/* =====================================================
+   TANGGAL SINGKAT
+===================================================== */
+
+if(
+  DATA.tanggal &&
+  DATA.tanggal.includes("-")
+){
+
+  const parts =
+    DATA.tanggal.split("-");
+
+  DATA.tanggalSingkat =
+    parts[2] +
+    " • " +
+    parts[1] +
+    " • " +
+    parts[0];
+
+}
+
+
+/* =====================================================
+   JAM
+===================================================== */
+
+if(DATA.jam){
+
+  const jam =
+    DATA.jam.replace(":", ".");
+
+  DATA.jamAkad =
+    jam +
+    " WIB – Selesai";
+
+  DATA.jamResepsi =
+    jam +
+    " WIB – Selesai";
+
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+if(
+  DATA.tanggal &&
+  DATA.tanggal.includes("-")
+){
+
+  DATA.countdown =
+    DATA.tanggal +
+    "T" +
+    (DATA.jam || "09:00") +
+    ":00+07:00";
+
+}
 
 </script>
 
@@ -935,10 +1276,21 @@ const DATA = {
   id="cover"
 >
 
-  <div class="ornament ornament1">✦</div>
-  <div class="ornament ornament2">✧</div>
-  <div class="ornament ornament3">✦</div>
-  <div class="ornament ornament4">✧</div>
+  <div class="ornament ornament1">
+    ✦
+  </div>
+
+  <div class="ornament ornament2">
+    ✧
+  </div>
+
+  <div class="ornament ornament3">
+    ✦
+  </div>
+
+  <div class="ornament ornament4">
+    ✧
+  </div>
 
 
   <div class="cover-content">
@@ -947,19 +1299,16 @@ const DATA = {
       THE WEDDING OF
     </div>
 
-
     <h1 id="coverNames">
-      Febriyanda & Zaida Amala
+      -
     </h1>
-
 
     <div
       class="cover-date"
       id="coverDate"
     >
-      27 • 07 • 2027
+      -
     </div>
-
 
     <img
       class="cover-photo"
@@ -967,7 +1316,6 @@ const DATA = {
       src=""
       alt="Foto Pengantin"
     >
-
 
     <a
       href="#isi"
@@ -992,10 +1340,7 @@ const DATA = {
 <div class="marquee">
 
   <span id="marqueeText">
-    ✦ FEBRIYANDA & ZAIDA AMALA ✦
-    THE WEDDING DAY ✦
-    27 JULI 2027 ✦
-    LOVE FOREVER ✦
+    ✦ THE WEDDING DAY ✦
   </span>
 
 </div>
@@ -1017,7 +1362,7 @@ const DATA = {
 
   <div class="divider"></div>
 
-  <p>
+  <p id="pesanPembuka">
     Dengan memohon rahmat dan ridho Allah SWT,
     kami bermaksud mengundang
     Bapak/Ibu/Saudara/i untuk hadir
@@ -1056,14 +1401,14 @@ const DATA = {
       class="person-name"
       id="namaPria"
     >
-      Febriyanda
+      -
     </div>
 
     <div
       class="person-role"
       id="ortuPria"
     >
-      Putra dari Bapak & Ibu
+      -
     </div>
 
   </div>
@@ -1086,14 +1431,14 @@ const DATA = {
       class="person-name"
       id="namaWanita"
     >
-      Zaida Amala
+      -
     </div>
 
     <div
       class="person-role"
       id="ortuWanita"
     >
-      Putri dari Bapak & Ibu
+      -
     </div>
 
   </div>
@@ -1121,23 +1466,54 @@ const DATA = {
   <div class="countdown">
 
     <div class="time">
-      <strong id="days">0</strong>
-      <small>HARI</small>
+
+      <strong id="days">
+        0
+      </strong>
+
+      <small>
+        HARI
+      </small>
+
     </div>
 
-    <div class="time">
-      <strong id="hours">0</strong>
-      <small>JAM</small>
-    </div>
 
     <div class="time">
-      <strong id="minutes">0</strong>
-      <small>MENIT</small>
+
+      <strong id="hours">
+        0
+      </strong>
+
+      <small>
+        JAM
+      </small>
+
     </div>
 
+
     <div class="time">
-      <strong id="seconds">0</strong>
-      <small>DETIK</small>
+
+      <strong id="minutes">
+        0
+      </strong>
+
+      <small>
+        MENIT
+      </small>
+
+    </div>
+
+
+    <div class="time">
+
+      <strong id="seconds">
+        0
+      </strong>
+
+      <small>
+        DETIK
+      </small>
+
     </div>
 
   </div>
@@ -1156,7 +1532,7 @@ const DATA = {
   </div>
 
   <h2>
-    Waktu & Tempat
+    Acara Pernikahan
   </h2>
 
   <div class="divider"></div>
@@ -1168,40 +1544,31 @@ const DATA = {
       Akad Nikah
     </h3>
 
-    <p>
-
-      <strong id="tanggalAkad">
-        27 Juli 2027
-      </strong>
-
-      <br>
-
-      <span id="jamAkad">
-        09.00 WIB – Selesai
-      </span>
-
-      <br><br>
-
-      <strong id="lokasiAkad">
-        Simpang Uning Niken
-      </strong>
-
-      <br>
-
-      <span id="alamatAkad">
-        Kecamatan Bies, Aceh Tengah, Aceh
-      </span>
-
+    <p id="tanggalAkad">
+      -
     </p>
 
+    <p id="jamAkad">
+      -
+    </p>
+
+    <br>
+
+    <p id="lokasiAkad">
+      -
+    </p>
+
+    <p id="alamatAkad">
+      -
+    </p>
 
     <a
-      class="map"
       id="mapAkad"
+      class="map"
       href="#"
       target="_blank"
     >
-      LIHAT LOKASI
+      📍 GOOGLE MAPS
     </a>
 
   </div>
@@ -1213,40 +1580,31 @@ const DATA = {
       Resepsi
     </h3>
 
-    <p>
-
-      <strong id="tanggalResepsi">
-        27 Juli 2027
-      </strong>
-
-      <br>
-
-      <span id="jamResepsi">
-        09.00 WIB – Selesai
-      </span>
-
-      <br><br>
-
-      <strong id="lokasiResepsi">
-        Simpang Uning Niken
-      </strong>
-
-      <br>
-
-      <span id="alamatResepsi">
-        Kecamatan Bies, Aceh Tengah, Aceh
-      </span>
-
+    <p id="tanggalResepsi">
+      -
     </p>
 
+    <p id="jamResepsi">
+      -
+    </p>
+
+    <br>
+
+    <p id="lokasiResepsi">
+      -
+    </p>
+
+    <p id="alamatResepsi">
+      -
+    </p>
 
     <a
-      class="map"
       id="mapResepsi"
+      class="map"
       href="#"
       target="_blank"
     >
-      LIHAT LOKASI
+      📍 GOOGLE MAPS
     </a>
 
   </div>
@@ -1273,13 +1631,29 @@ const DATA = {
 
   <div class="gallery-grid">
 
-    <img id="gallery1" src="" alt="Foto 1">
+    <img
+      id="gallery1"
+      src=""
+      alt="Foto 1"
+    >
 
-    <img id="gallery2" src="" alt="Foto 2">
+    <img
+      id="gallery2"
+      src=""
+      alt="Foto 2"
+    >
 
-    <img id="gallery3" src="" alt="Foto 3">
+    <img
+      id="gallery3"
+      src=""
+      alt="Foto 3"
+    >
 
-    <img id="gallery4" src="" alt="Foto 4">
+    <img
+      id="gallery4"
+      src=""
+      alt="Foto 4"
+    >
 
   </div>
 
@@ -1303,7 +1677,9 @@ const DATA = {
   <div class="divider"></div>
 
 
-  <form onsubmit="sendRSVP(event)">
+  <form
+    onsubmit="sendRSVP(event)"
+  >
 
     <label>
       Nama
@@ -1312,8 +1688,8 @@ const DATA = {
     <input
       id="guestName"
       type="text"
-      placeholder="Nama Anda"
       required
+      placeholder="Nama Anda"
     >
 
 
@@ -1330,12 +1706,12 @@ const DATA = {
         Pilih
       </option>
 
-      <option value="Hadir">
-        Saya akan hadir
+      <option value="akan hadir">
+        Akan hadir
       </option>
 
-      <option value="Tidak hadir">
-        Saya tidak dapat hadir
+      <option value="tidak dapat hadir">
+        Tidak dapat hadir
       </option>
 
     </select>
@@ -1355,7 +1731,7 @@ const DATA = {
       class="submit"
       type="submit"
     >
-      KONFIRMASI VIA WHATSAPP
+      KIRIM KONFIRMASI
     </button>
 
   </form>
@@ -1364,7 +1740,7 @@ const DATA = {
 
 
 <!-- =====================================================
-     GIFT
+     WEDDING GIFT
 ===================================================== -->
 
 <section class="reveal">
@@ -1382,35 +1758,30 @@ const DATA = {
 
   <div class="gift-box">
 
-    Bagi keluarga dan sahabat
-    yang ingin memberikan tanda kasih,
-    dapat melalui:
-
-
-    <br><br>
-
-
     <div
       class="bank"
       id="bank"
     >
-      Bank BCA
+      -
     </div>
-
 
     <div
       class="number"
       id="rekening"
     >
-      1234567890
+      -
     </div>
 
-
     <div>
+
       a.n.
-      <span id="pemilikRekening">
-        Febriyanda
+
+      <span
+        id="pemilikRekening"
+      >
+        -
       </span>
+
     </div>
 
 
@@ -1433,7 +1804,7 @@ const DATA = {
 <footer>
 
   <h2 id="footerNames">
-    Febriyanda & Zaida Amala
+    -
   </h2>
 
   <p>
@@ -1442,7 +1813,7 @@ const DATA = {
   </p>
 
   <p id="footerDate">
-    27 • 07 • 2027
+    -
   </p>
 
 </footer>
@@ -1452,7 +1823,7 @@ const DATA = {
 
 
 <!-- =====================================================
-     MUSIC BUTTON
+     MUSIC
 ===================================================== -->
 
 <button
@@ -1473,7 +1844,7 @@ const DATA = {
 <script>
 
 /* =====================================================
-   URL DASAR GITHUB
+   URL GITHUB
 ===================================================== */
 
 const GITHUB_BASE =
@@ -1484,20 +1855,53 @@ const GITHUB_BASE =
 
 
 /* =====================================================
-   SET FOTO COVER
+   FUNGSI FOTO
 ===================================================== */
 
-document.documentElement.style.setProperty(
-  "--cover-image",
-  "url('" +
-  GITHUB_BASE +
-  DATA.fotoCover +
-  "')"
-);
+function fotoURL(namaFile){
+
+  if(!namaFile){
+    return "";
+  }
+
+  if(
+    namaFile.startsWith("http://") ||
+    namaFile.startsWith("https://")
+  ){
+
+    return namaFile;
+
+  }
+
+  return (
+    GITHUB_BASE +
+    encodeURIComponent(namaFile)
+  );
+
+}
 
 
 /* =====================================================
-   DATA NAMA
+   SET BACKGROUND COVER
+===================================================== */
+
+if(DATA.fotoCover){
+
+  document.documentElement.style.setProperty(
+
+    "--cover-image",
+
+    "url('" +
+    fotoURL(DATA.fotoCover) +
+    "')"
+
+  );
+
+}
+
+
+/* =====================================================
+   NAMA
 ===================================================== */
 
 document.title =
@@ -1510,6 +1914,7 @@ document.title =
 document.getElementById(
   "coverNames"
 ).innerText =
+
   DATA.pria +
   " & " +
   DATA.wanita;
@@ -1548,6 +1953,7 @@ document.getElementById(
 document.getElementById(
   "footerNames"
 ).innerText =
+
   DATA.pria +
   " & " +
   DATA.wanita;
@@ -1560,56 +1966,63 @@ document.getElementById(
 
 
 /* =====================================================
+   PESAN
+===================================================== */
+
+if(DATA.pesan){
+
+  document.getElementById(
+    "pesanPembuka"
+  ).innerText =
+    DATA.pesan;
+
+}
+
+
+/* =====================================================
    FOTO
 ===================================================== */
 
 document.getElementById(
   "coverPhoto"
 ).src =
-  GITHUB_BASE +
-  DATA.fotoCover;
+  fotoURL(DATA.fotoCover);
 
 
 document.getElementById(
   "fotoPria"
 ).src =
-  GITHUB_BASE +
-  DATA.fotoPria;
+  fotoURL(DATA.fotoPria);
 
 
 document.getElementById(
   "fotoWanita"
 ).src =
-  GITHUB_BASE +
-  DATA.fotoWanita;
+  fotoURL(DATA.fotoWanita);
 
 
 document.getElementById(
   "gallery1"
 ).src =
-  GITHUB_BASE +
-  DATA.foto1;
+  fotoURL(DATA.foto1);
 
 
 document.getElementById(
   "gallery2"
 ).src =
-  GITHUB_BASE +
-  DATA.foto2;
+  fotoURL(DATA.foto2);
 
 
 document.getElementById(
   "gallery3"
 ).src =
-  GITHUB_BASE +
-  DATA.foto3;
+  fotoURL(DATA.foto3);
 
 
 document.getElementById(
   "gallery4"
 ).src =
-  GITHUB_BASE +
-  DATA.foto4;
+  fotoURL(DATA.foto4);
 
 
 /* =====================================================
@@ -1762,6 +2175,7 @@ function countdown(){
     ).innerText = "0";
 
     return;
+
   }
 
 
@@ -1830,6 +2244,7 @@ function countdown(){
 
 countdown();
 
+
 setInterval(
   countdown,
   1000
@@ -1871,15 +2286,15 @@ const observer =
 
 
 document
-  .querySelectorAll(
-    ".reveal"
-  )
+  .querySelectorAll(".reveal")
   .forEach(
+
     function(item){
 
       observer.observe(item);
 
     }
+
   );
 
 
@@ -1899,25 +2314,28 @@ const musicButton =
   );
 
 
-let playing =
-  false;
+let playing = false;
 
 
 if(DATA.musik){
 
   audio.src =
-    GITHUB_BASE +
-    DATA.musik;
+    fotoURL(DATA.musik);
 
 }
 
 
 function openInvitation(){
 
-  if(DATA.musik){
+  if(!DATA.musik){
+    return;
+  }
 
-    audio.play()
-      .then(function(){
+
+  audio.play()
+    .then(
+
+      function(){
 
         playing = true;
 
@@ -1928,10 +2346,12 @@ function openInvitation(){
           "playing"
         );
 
-      })
-      .catch(function(){});
+      }
 
-  }
+    )
+    .catch(
+      function(){}
+    );
 
 }
 
@@ -1941,7 +2361,7 @@ function toggleMusic(){
   if(!DATA.musik){
 
     alert(
-      "Musik belum dipasang. Upload file MP3 ke repository terlebih dahulu."
+      "Musik belum dipasang."
     );
 
     return;
@@ -1967,18 +2387,22 @@ function toggleMusic(){
   else{
 
     audio.play()
-      .then(function(){
+      .then(
 
-        playing = true;
+        function(){
 
-        musicButton.innerText =
-          "❚❚";
+          playing = true;
 
-        musicButton.classList.add(
-          "playing"
-        );
+          musicButton.innerText =
+            "❚❚";
 
-      });
+          musicButton.classList.add(
+            "playing"
+          );
+
+        }
+
+      );
 
   }
 
@@ -1986,7 +2410,7 @@ function toggleMusic(){
 
 
 /* =====================================================
-   RSVP
+   RSVP WHATSAPP
 ===================================================== */
 
 function sendRSVP(event){
@@ -2022,21 +2446,21 @@ function sendRSVP(event){
 
     DATA.wanita +
 
-    ",%0A%0A" +
+    ",\n\n" +
 
     "Saya " +
 
-    encodeURIComponent(name) +
+    name +
 
     " ingin mengonfirmasi bahwa saya " +
 
-    encodeURIComponent(attendance) +
+    attendance +
 
-    ".%0A%0A" +
+    ".\n\n" +
 
     "Pesan: " +
 
-    encodeURIComponent(message);
+    message;
 
 
   window.open(
@@ -2047,7 +2471,7 @@ function sendRSVP(event){
 
     "?text=" +
 
-    text,
+    encodeURIComponent(text),
 
     "_blank"
 
@@ -2066,19 +2490,24 @@ function copyAccount(){
     .writeText(
       DATA.rekening
     )
-    .then(function(){
 
-      alert(
-        "Nomor rekening berhasil disalin."
-      );
+    .then(
 
-    });
+      function(){
+
+        alert(
+          "Nomor rekening berhasil disalin."
+        );
+
+      }
+
+    );
 
 }
 
 
 /* =====================================================
-   BINTANG / ORNAMEN BERGERAK
+   BINTANG JATUH
 ===================================================== */
 
 function createStar(){
@@ -2094,23 +2523,33 @@ function createStar(){
 
 
   star.innerText =
+
     Math.random() > .5
     ? "✦"
     : "✧";
 
 
   star.style.left =
+
     Math.random()*100 +
     "vw";
 
 
   star.style.fontSize =
-    (10 + Math.random()*12) +
+
+    (
+      10 +
+      Math.random()*12
+    ) +
     "px";
 
 
   star.style.animationDuration =
-    (5 + Math.random()*5) +
+
+    (
+      5 +
+      Math.random()*5
+    ) +
     "s";
 
 
@@ -2120,12 +2559,15 @@ function createStar(){
 
 
   setTimeout(
+
     function(){
 
       star.remove();
 
     },
+
     11000
+
   );
 
 }
