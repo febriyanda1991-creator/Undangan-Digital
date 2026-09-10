@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Wedding Of Febri & amala</title>
+
+<title>Febriyanda & Zaida Amala</title>
 
 <style>
 *{
@@ -17,288 +18,371 @@ html{
 }
 
 body{
-  font-family:Georgia,"Times New Roman",serif;
-  background:#eee8df;
-  color:#4b4037;
+  font-family:Georgia, "Times New Roman", serif;
+  background:#080808;
+  color:#f5f0e6;
+  line-height:1.7;
 }
 
 .container{
+  width:100%;
   max-width:480px;
   margin:auto;
-  background:#fffaf3;
-  min-height:100vh;
   overflow:hidden;
+  background:#080808;
 }
 
-/* COVER */
+.gold{
+  color:#d4af37;
+}
+
+/* ================= COVER ================= */
+
 .cover{
-  height:100vh;
-  min-height:650px;
+  min-height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:30px;
+  padding:30px 20px;
+
   background:
-    llinear-gradient(rgba(255,250,243,.35),rgba(255,250,243,.50)),
+    linear-gradient(
+      rgba(0,0,0,.42),
+      rgba(0,0,0,.68)
+    ),
     url("https://raw.githubusercontent.com/febriyanda1991-creator/Undangan-Digital/main/IMG_7063.jpeg")
-    center/cover;
+    center/cover no-repeat;
 }
 
-.cover-box{
+.cover-content{
   width:100%;
-  padding:45px 25px;
-  border:1px solid #c8a96b;
-  background:rgba(255,250,243,.9);
-  border-radius:4px;
+  padding:35px 20px;
+  border:1px solid rgba(212,175,55,.55);
+  background:rgba(0,0,0,.48);
+  backdrop-filter:blur(4px);
 }
 
 .small-title{
-  font-size:14px;
-  letter-spacing:4px;
+  font-size:13px;
+  letter-spacing:5px;
   text-transform:uppercase;
-  color:#a17d38;
-  margin-bottom:25px;
+  color:#d4af37;
+  margin-bottom:20px;
 }
 
 .cover h1{
-  font-size:100px;
+  font-size:42px;
   font-weight:normal;
-  color:#594b3e;
-  margin-bottom:12px;
+  line-height:1.2;
+  color:#fff;
+}
+
+.cover h1 span{
+  color:#d4af37;
 }
 
 .cover-date{
+  margin-top:20px;
   font-size:15px;
-  letter-spacing:3px;
-  margin-bottom:30px;
-}
-
-.cover-photo{
-  width:145px;
-  height:145px;
-  border-radius:50%;
-  object-fit:cover;
-  border:5px solid white;
-  box-shadow:0 5px 20px rgba(0,0,0,.15);
-  margin-bottom:30px;
+  letter-spacing:4px;
+  color:#eee;
 }
 
 .open-btn{
   display:inline-block;
-  background:#b39152;
-  color:white;
-  padding:14px 27px;
-  border-radius:30px;
+  margin-top:35px;
+  padding:12px 28px;
+  border:1px solid #d4af37;
+  color:#d4af37;
   text-decoration:none;
-  letter-spacing:1px;
-  cursor:pointer;
+  font-size:12px;
+  letter-spacing:3px;
+  transition:.3s;
 }
 
-/* SECTION */
+.open-btn:hover{
+  background:#d4af37;
+  color:#000;
+}
+
+/* ================= GENERAL ================= */
+
 section{
-  padding:65px 25px;
+  padding:70px 22px;
   text-align:center;
 }
 
-.section-label{
-  color:#b39152;
+.section-title{
+  color:#d4af37;
   font-size:12px;
-  letter-spacing:3px;
+  letter-spacing:4px;
   text-transform:uppercase;
-  margin-bottom:15px;
+  margin-bottom:12px;
 }
 
-section h2{
-  font-size:32px;
+.section-heading{
+  font-size:30px;
   font-weight:normal;
-  color:#594b3e;
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 
 .divider{
-  width:60px;
+  width:70px;
   height:1px;
-  background:#c8a96b;
-  margin:20px auto;
+  background:#d4af37;
+  margin:20px auto 30px;
 }
 
-/* OPENING */
-.opening p{
-  font-family:Arial,sans-serif;
-  line-height:1.8;
+p{
+  color:#cfc9be;
   font-size:14px;
 }
 
-/* COUPLE */
+/* ================= OPENING ================= */
+
+.opening{
+  background:#0d0d0d;
+}
+
+.opening .quote{
+  font-size:22px;
+  font-style:italic;
+  color:#d4af37;
+  margin-bottom:25px;
+}
+
+/* ================= COUPLE ================= */
+
 .couple{
-  background:#f5eee5;
+  background:#080808;
+}
+
+.couple-card{
+  margin-top:25px;
+}
+
+.couple-photo{
+  width:145px;
+  height:145px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid #d4af37;
+  padding:5px;
 }
 
 .couple-name{
-  font-size:30px;
-  color:#594b3e;
-  margin:18px 0 5px;
+  font-size:25px;
+  color:#fff;
+  margin-top:12px;
 }
 
-.couple-role{
-  font-family:Arial,sans-serif;
-  font-size:13px;
-  color:#85776b;
+.couple-desc{
+  margin-top:5px;
+  color:#aaa;
 }
 
-/* COUNTDOWN */
+.and{
+  font-size:35px;
+  color:#d4af37;
+  margin:25px 0;
+  font-style:italic;
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown-section{
+  background:
+    linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.92)),
+    url("https://raw.githubusercontent.com/febriyanda1991-creator/Undangan-Digital/main/IMG_7063.jpeg")
+    center/cover;
+}
+
 .countdown{
-  display:flex;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
   gap:8px;
   margin-top:30px;
 }
 
 .time-box{
-  width:70px;
-  padding:13px 5px;
-  background:white;
-  border:1px solid #dfd2c1;
-  border-radius:5px;
+  border:1px solid rgba(212,175,55,.5);
+  padding:14px 4px;
+  background:rgba(0,0,0,.55);
 }
 
 .time-box strong{
   display:block;
-  font-size:22px;
-  color:#9d7b3d;
+  font-size:25px;
+  color:#d4af37;
 }
 
 .time-box span{
-  font-family:Arial,sans-serif;
   font-size:10px;
-  text-transform:uppercase;
+  color:#aaa;
+  letter-spacing:1px;
 }
 
-/* EVENT */
+/* ================= EVENT ================= */
+
+.event-section{
+  background:#0d0d0d;
+}
+
 .event-card{
-  background:#f8f3ec;
-  border:1px solid #dfd2c1;
-  padding:25px 15px;
-  margin:18px 0;
-  border-radius:8px;
+  border:1px solid rgba(212,175,55,.45);
+  padding:28px 18px;
+  margin-top:25px;
+  background:#101010;
 }
 
 .event-card h3{
   font-size:25px;
+  color:#d4af37;
   font-weight:normal;
-  color:#9d7b3d;
   margin-bottom:15px;
 }
 
-.event-card p{
-  font-family:Arial,sans-serif;
-  font-size:14px;
-  line-height:1.8;
+.event-card .date{
+  color:#fff;
+  font-size:16px;
+}
+
+.event-card .location{
+  margin-top:15px;
+  color:#aaa;
 }
 
 .map-btn{
   display:inline-block;
-  margin-top:18px;
-  padding:11px 20px;
-  background:#594b3e;
-  color:white;
+  margin-top:20px;
+  padding:10px 20px;
+  border:1px solid #d4af37;
+  color:#d4af37;
   text-decoration:none;
-  border-radius:25px;
-  font-family:Arial,sans-serif;
-  font-size:13px;
+  font-size:11px;
+  letter-spacing:2px;
 }
 
-/* GALLERY */
+/* ================= GALLERY ================= */
+
 .gallery{
-  background:#f5eee5;
-}
-
-.gallery-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:8px;
+  margin-top:25px;
 }
 
-.gallery-grid img{
+.gallery img{
   width:100%;
   height:190px;
   object-fit:cover;
-  border-radius:5px;
+  border:1px solid rgba(212,175,55,.3);
 }
 
-/* RSVP */
+/* ================= RSVP ================= */
+
 .rsvp{
-  background:#fffaf3;
+  background:#0d0d0d;
 }
 
-form{
+.form-group{
   text-align:left;
+  margin-top:15px;
 }
 
-label{
+.form-group label{
   display:block;
-  font-family:Arial,sans-serif;
-  font-size:13px;
-  margin:15px 0 7px;
+  color:#d4af37;
+  font-size:12px;
+  margin-bottom:6px;
 }
 
-input,select{
+.form-group input,
+.form-group select,
+.form-group textarea{
   width:100%;
-  padding:13px;
-  border:1px solid #d8c9b7;
-  border-radius:5px;
-  background:white;
-  font-size:14px;
+  padding:12px;
+  border:1px solid #444;
+  background:#080808;
+  color:#fff;
+  outline:none;
+  font-family:inherit;
+}
+
+.form-group textarea{
+  height:90px;
+  resize:none;
 }
 
 .submit-btn{
   width:100%;
-  margin-top:20px;
-  padding:14px;
-  border:0;
-  border-radius:25px;
-  background:#b39152;
-  color:white;
-  font-family:Arial,sans-serif;
+  margin-top:22px;
+  padding:13px;
+  border:1px solid #d4af37;
+  background:#d4af37;
+  color:#000;
+  font-weight:bold;
+  letter-spacing:2px;
   cursor:pointer;
 }
 
-/* GIFT */
+/* ================= GIFT ================= */
+
 .gift{
-  background:#f5eee5;
+  background:#080808;
 }
 
-.gift-box{
-  background:white;
-  border:1px solid #dfd2c1;
-  padding:25px;
-  border-radius:8px;
-  font-family:Arial,sans-serif;
-  line-height:1.8;
-  font-size:14px;
+.gift-card{
+  margin-top:25px;
+  border:1px solid rgba(212,175,55,.45);
+  padding:28px 15px;
 }
 
-/* FOOTER */
+.bank{
+  font-size:20px;
+  color:#d4af37;
+}
+
+.account{
+  margin-top:10px;
+  font-size:23px;
+  letter-spacing:2px;
+  color:#fff;
+}
+
+.copy-btn{
+  margin-top:18px;
+  padding:9px 18px;
+  background:transparent;
+  border:1px solid #d4af37;
+  color:#d4af37;
+  cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
 footer{
+  padding:50px 20px;
   text-align:center;
-  padding:45px 20px;
-  background:#594b3e;
-  color:#fffaf3;
+  border-top:1px solid #222;
+  background:#050505;
 }
 
 footer h2{
   font-weight:normal;
-  margin-bottom:10px;
+  color:#d4af37;
+  font-size:27px;
 }
 
 footer p{
-  font-family:Arial,sans-serif;
+  margin-top:10px;
   font-size:12px;
-  opacity:.8;
+  color:#777;
 }
 
-/* MUSIC */
+/* ================= MUSIC ================= */
+
 .music-btn{
   position:fixed;
   right:18px;
@@ -306,25 +390,35 @@ footer p{
   width:48px;
   height:48px;
   border-radius:50%;
-  border:1px solid #b39152;
-  background:#fffaf3;
-  color:#9d7b3d;
-  font-size:20px;
-  z-index:99;
-  box-shadow:0 3px 12px rgba(0,0,0,.15);
+  border:1px solid #d4af37;
+  background:#090909;
+  color:#d4af37;
+  z-index:999;
   cursor:pointer;
+  font-size:18px;
 }
 
-/* ANIMATION */
+/* ================= ANIMATION ================= */
+
 .reveal{
   opacity:0;
   transform:translateY(25px);
-  transition:all .8s ease;
+  transition:1s ease;
 }
 
 .reveal.show{
   opacity:1;
   transform:translateY(0);
+}
+
+@media(max-width:360px){
+  .cover h1{
+    font-size:34px;
+  }
+
+  .section-heading{
+    font-size:26px;
+  }
 }
 </style>
 </head>
@@ -333,49 +427,50 @@ footer p{
 
 <div class="container">
 
-<!-- COVER -->
-<div class="cover">
+<!-- ================= COVER ================= -->
 
-  <div class="cover-box">
+<section class="cover">
+
+  <div class="cover-content">
 
     <div class="small-title">
       The Wedding Of
     </div>
 
-    <h1>Alya & Raka</h1>
+    <h1>
+      Febriyanda
+      <span>&</span>
+      Zaida Amala
+    </h1>
 
     <div class="cover-date">
-      12 • 12 • 2026
+      27 • 07 • 2027
     </div>
 
-    <img
-      class="cover-photo"
-      src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=80"
-      alt="Wedding">
-
-    <br>
-
-    <a href="#isi" class="open-btn" onclick="bukaUndangan()">
+    <a href="#opening" class="open-btn">
       BUKA UNDANGAN
     </a>
 
   </div>
 
-</div>
+</section>
 
 
-<div id="isi">
+<!-- ================= OPENING ================= -->
 
-<!-- OPENING -->
-<section class="opening reveal">
+<section class="opening reveal" id="opening">
 
-  <div class="section-label">
+  <div class="section-title">
     Assalamu'alaikum
   </div>
 
-  <h2>Dengan Bahagia</h2>
-
   <div class="divider"></div>
+
+  <p class="quote">
+    "Dan di antara tanda-tanda kekuasaan-Nya
+    ialah Dia menciptakan untukmu pasangan
+    dari jenismu sendiri."
+  </p>
 
   <p>
     Dengan memohon rahmat dan ridho Allah SWT,
@@ -386,50 +481,72 @@ footer p{
 </section>
 
 
-<!-- COUPLE -->
+<!-- ================= COUPLE ================= -->
+
 <section class="couple reveal">
 
-  <div class="section-label">
-    Mempelai
+  <div class="section-title">
+    The Bride & Groom
   </div>
 
-  <h2>Pengantin</h2>
+  <h2 class="section-heading">
+    Mempelai
+  </h2>
 
   <div class="divider"></div>
 
-  <div class="couple-name">
-    Alya Putri
+  <div class="couple-card">
+
+    <img
+      class="couple-photo"
+      src="https://raw.githubusercontent.com/febriyanda1991-creator/Undangan-Digital/main/IMG_7063.jpeg"
+      alt="Febriyanda">
+
+    <div class="couple-name">
+      Febriyanda
+    </div>
+
+    <div class="couple-desc">
+      Putra dari Bapak & Ibu
+    </div>
+
   </div>
 
-  <div class="couple-role">
-    Putri dari Bapak Ahmad & Ibu Siti
-  </div>
-
-  <br>
-
-  <div style="font-size:25px;color:#b39152;">
+  <div class="and">
     &
   </div>
 
-  <div class="couple-name">
-    Raka Pratama
-  </div>
+  <div class="couple-card">
 
-  <div class="couple-role">
-    Putra dari Bapak Budi & Ibu Lina
+    <img
+      class="couple-photo"
+      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80"
+      alt="Zaida Amala">
+
+    <div class="couple-name">
+      Zaida Amala
+    </div>
+
+    <div class="couple-desc">
+      Putri dari Bapak & Ibu
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- COUNTDOWN -->
-<section class="reveal">
+<!-- ================= COUNTDOWN ================= -->
 
-  <div class="section-label">
-    Menuju Hari Bahagia
+<section class="countdown-section reveal">
+
+  <div class="section-title">
+    Save The Date
   </div>
 
-  <h2>Save The Date</h2>
+  <h2 class="section-heading">
+    Menuju Hari Bahagia
+  </h2>
 
   <div class="divider"></div>
 
@@ -437,22 +554,22 @@ footer p{
 
     <div class="time-box">
       <strong id="days">0</strong>
-      <span>Hari</span>
+      <span>HARI</span>
     </div>
 
     <div class="time-box">
       <strong id="hours">0</strong>
-      <span>Jam</span>
+      <span>JAM</span>
     </div>
 
     <div class="time-box">
       <strong id="minutes">0</strong>
-      <span>Menit</span>
+      <span>MENIT</span>
     </div>
 
     <div class="time-box">
       <strong id="seconds">0</strong>
-      <span>Detik</span>
+      <span>DETIK</span>
     </div>
 
   </div>
@@ -460,34 +577,46 @@ footer p{
 </section>
 
 
-<!-- EVENT -->
-<section class="reveal">
+<!-- ================= EVENT ================= -->
 
-  <div class="section-label">
-    Waktu & Tempat
+<section class="event-section reveal">
+
+  <div class="section-title">
+    Wedding Event
   </div>
 
-  <h2>Acara Pernikahan</h2>
+  <h2 class="section-heading">
+    Waktu & Tempat
+  </h2>
 
   <div class="divider"></div>
 
+
+  <!-- AKAD -->
+
   <div class="event-card">
 
-    <h3>Akad Nikah</h3>
+    <h3>
+      Akad Nikah
+    </h3>
 
-    <p>
-      Sabtu, 12 Desember 2026
+    <p class="date">
+      Selasa, 27 Juli 2027
       <br>
-      15.00 WIB – Selesai
-      <br><br>
-      Masjid Al-Ikhlas
+      09.00 WIB – Selesai
+    </p>
+
+    <p class="location">
+      Simpang Uning Niken
       <br>
-      Alamat Contoh No. 123
+      Kecamatan Bies
+      <br>
+      Aceh Tengah, Aceh
     </p>
 
     <a
       class="map-btn"
-      href="https://www.google.com/maps/search/?api=1&query=Masjid+Al-Ikhlas"
+      href="https://www.google.com/maps/search/?api=1&query=Simpang+Uning+Niken+Aceh+Tengah"
       target="_blank">
       LIHAT LOKASI
     </a>
@@ -495,23 +624,31 @@ footer p{
   </div>
 
 
+  <!-- RESEPSI -->
+
   <div class="event-card">
 
-    <h3>Resepsi</h3>
+    <h3>
+      Resepsi
+    </h3>
 
-    <p>
-      Sabtu, 12 Desember 2026
+    <p class="date">
+      Selasa, 27 Juli 2027
       <br>
-      19.00 WIB – Selesai
-      <br><br>
-      Gedung Serbaguna
+      09.00 WIB – Selesai
+    </p>
+
+    <p class="location">
+      Simpang Uning Niken
       <br>
-      Alamat Contoh No. 456
+      Kecamatan Bies
+      <br>
+      Aceh Tengah, Aceh
     </p>
 
     <a
       class="map-btn"
-      href="https://www.google.com/maps/search/?api=1&query=Gedung+Serbaguna"
+      href="https://www.google.com/maps/search/?api=1&query=Simpang+Uning+Niken+Aceh+Tengah"
       target="_blank">
       LIHAT LOKASI
     </a>
@@ -521,33 +658,36 @@ footer p{
 </section>
 
 
-<!-- GALLERY -->
-<section class="gallery reveal">
+<!-- ================= GALLERY ================= -->
 
-  <div class="section-label">
-    Our Moment
+<section class="reveal">
+
+  <div class="section-title">
+    Our Moments
   </div>
 
-  <h2>Galeri</h2>
+  <h2 class="section-heading">
+    Galeri
+  </h2>
 
   <div class="divider"></div>
 
-  <div class="gallery-grid">
+  <div class="gallery">
 
     <img
-      src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80"
+      src="https://raw.githubusercontent.com/febriyanda1991-creator/Undangan-Digital/main/IMG_7063.jpeg"
       alt="Foto 1">
 
     <img
-      src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80"
+      src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80"
       alt="Foto 2">
 
     <img
-      src="https://images.unsplash.com/photo-1460364157752-92655517c2a8?auto=format&fit=crop&w=600&q=80"
+      src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=80"
       alt="Foto 3">
 
     <img
-      src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
+      src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=700&q=80"
       alt="Foto 4">
 
   </div>
@@ -555,47 +695,81 @@ footer p{
 </section>
 
 
-<!-- RSVP -->
+<!-- ================= RSVP ================= -->
+
 <section class="rsvp reveal">
 
-  <div class="section-label">
-    Konfirmasi Kehadiran
+  <div class="section-title">
+    RSVP
   </div>
 
-  <h2>RSVP</h2>
+  <h2 class="section-heading">
+    Konfirmasi Kehadiran
+  </h2>
 
   <div class="divider"></div>
 
-  <form onsubmit="kirimRSVP(event)">
+  <form id="rsvpForm">
 
-    <label>Nama</label>
+    <div class="form-group">
 
-    <input
-      type="text"
-      id="namaTamu"
-      placeholder="Masukkan nama Anda"
-      required>
+      <label>
+        Nama
+      </label>
 
-    <label>Kehadiran</label>
+      <input
+        type="text"
+        id="guestName"
+        placeholder="Nama Anda"
+        required>
 
-    <select id="kehadiran" required>
+    </div>
 
-      <option value="">
-        Pilih konfirmasi
-      </option>
 
-      <option value="Hadir">
-        Saya akan hadir
-      </option>
+    <div class="form-group">
 
-      <option value="Tidak hadir">
-        Saya tidak dapat hadir
-      </option>
+      <label>
+        Kehadiran
+      </label>
 
-    </select>
+      <select id="attendance" required>
 
-    <button class="submit-btn" type="submit">
-      KONFIRMASI VIA WHATSAPP
+        <option value="">
+          Pilih
+        </option>
+
+        <option value="Hadir">
+          Hadir
+        </option>
+
+        <option value="Tidak hadir">
+          Tidak hadir
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Pesan
+      </label>
+
+      <textarea
+        id="message"
+        placeholder="Tulis ucapan untuk kedua mempelai"></textarea>
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="submit-btn">
+
+      KIRIM KONFIRMASI
+
     </button>
 
   </form>
@@ -603,133 +777,226 @@ footer p{
 </section>
 
 
-<!-- GIFT -->
+<!-- ================= GIFT ================= -->
+
 <section class="gift reveal">
 
-  <div class="section-label">
+  <div class="section-title">
     Wedding Gift
   </div>
 
-  <h2>Tanda Kasih</h2>
+  <h2 class="section-heading">
+    Hadiah Pernikahan
+  </h2>
 
   <div class="divider"></div>
 
-  <div class="gift-box">
+  <p>
+    Doa restu Anda merupakan hadiah terindah
+    bagi kami. Namun apabila ingin memberikan
+    tanda kasih, dapat melalui:
+  </p>
 
-    Bagi keluarga dan sahabat yang ingin
-    memberikan tanda kasih, dapat melalui:
 
-    <br><br>
+  <div class="gift-card">
 
-    <strong>Bank BCA</strong>
-    <br>
-    1234567890
-    <br>
-    a.n. amala zaida
+    <div class="bank">
+      Bank BCA
+    </div>
 
-    <br><br>
+    <div class="account" id="accountNumber">
+      1234567890
+    </div>
 
-    Terima kasih atas doa dan perhatian
-    yang diberikan kepada kami.
+    <p>
+      a.n. Febriyanda
+    </p>
+
+    <button
+      class="copy-btn"
+      onclick="copyAccount()">
+
+      SALIN NOMOR
+
+    </button>
 
   </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
+
 <footer>
 
-  <h2>Amala & Febri</h2>
+  <h2>
+    Febriyanda & Zaida Amala
+  </h2>
 
   <p>
-    Terima kasih telah menjadi bagian
-    dari hari bahagia kami.
+    27 • 07 • 2027
   </p>
 
-  <br>
-
   <p>
-    12 • 12 • 2027
+    Terima kasih atas doa dan restunya.
   </p>
 
 </footer>
 
 </div>
 
-</div>
 
-
-<!-- MUSIC -->
-<button
-  class="music-btn"
-  id="musicButton"
-  onclick="toggleMusic()">
-  ♪
-</button>
+<!-- ================= MUSIC ================= -->
 
 <audio
   id="music"
   loop
-  preload="auto"
   src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
 </audio>
+
+<button
+  class="music-btn"
+  id="musicButton">
+  ♪
+</button>
 
 
 <script>
 
-/* COUNTDOWN */
+/* ================= COUNTDOWN ================= */
 
 const weddingDate =
-  new Date("2027-12-12T19:00:00+07:00").getTime();
+  new Date("2027-07-27T09:00:00+07:00").getTime();
 
 function updateCountdown(){
 
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
+  const now =
+    new Date().getTime();
+
+  const distance =
+    weddingDate - now;
 
   if(distance <= 0){
 
-    document.getElementById("days").innerText = "0";
-    document.getElementById("hours").innerText = "0";
-    document.getElementById("minutes").innerText = "0";
-    document.getElementById("seconds").innerText = "0";
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "0";
+    document.getElementById("minutes").textContent = "0";
+    document.getElementById("seconds").textContent = "0";
 
     return;
   }
 
   const days =
-    Math.floor(distance / (1000 * 60 * 60 * 24));
+    Math.floor(
+      distance /
+      (1000 * 60 * 60 * 24)
+    );
 
   const hours =
     Math.floor(
-      (distance % (1000 * 60 * 60 * 24))
-      / (1000 * 60 * 60)
+      (distance %
+      (1000 * 60 * 60 * 24)) /
+      (1000 * 60 * 60)
     );
 
   const minutes =
     Math.floor(
-      (distance % (1000 * 60 * 60))
-      / (1000 * 60)
+      (distance %
+      (1000 * 60 * 60)) /
+      (1000 * 60)
     );
 
   const seconds =
     Math.floor(
-      (distance % (1000 * 60))
-      / 1000
+      (distance %
+      (1000 * 60)) /
+      1000
     );
 
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = hours;
-  document.getElementById("minutes").innerText = minutes;
-  document.getElementById("seconds").innerText = seconds;
+  document.getElementById("days").textContent =
+    days;
+
+  document.getElementById("hours").textContent =
+    hours;
+
+  document.getElementById("minutes").textContent =
+    minutes;
+
+  document.getElementById("seconds").textContent =
+    seconds;
 }
 
 updateCountdown();
+
 setInterval(updateCountdown,1000);
 
 
-/* MUSIC */
+/* ================= RSVP WHATSAPP ================= */
+
+const nomorWhatsApp =
+  "6281234567890";
+
+document
+  .getElementById("rsvpForm")
+  .addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const nama =
+      document.getElementById("guestName").value;
+
+    const hadir =
+      document.getElementById("attendance").value;
+
+    const pesan =
+      document.getElementById("message").value;
+
+    const text =
+      `Assalamu'alaikum.
+
+Halo Febriyanda & Zaida Amala,
+
+Nama: ${nama}
+
+Konfirmasi: ${hadir}
+
+Pesan:
+${pesan}`;
+
+    const url =
+      "https://wa.me/" +
+      nomorWhatsApp +
+      "?text=" +
+      encodeURIComponent(text);
+
+    window.open(url,"_blank");
+
+  });
+
+
+/* ================= COPY REKENING ================= */
+
+function copyAccount(){
+
+  const number =
+    document.getElementById("accountNumber").textContent.trim();
+
+  navigator.clipboard.writeText(number)
+    .then(function(){
+
+      alert("Nomor rekening berhasil disalin.");
+
+    })
+    .catch(function(){
+
+      alert("Silakan salin nomor rekening secara manual.");
+
+    });
+
+}
+
+
+/* ================= MUSIC ================= */
 
 const music =
   document.getElementById("music");
@@ -737,44 +1004,17 @@ const music =
 const musicButton =
   document.getElementById("musicButton");
 
-let musicPlaying = false;
+let playing = false;
 
-function bukaUndangan(){
+musicButton.addEventListener("click",function(){
 
-  setTimeout(function(){
-
-    music.play()
-      .then(function(){
-
-        musicPlaying = true;
-        musicButton.innerText = "❚❚";
-
-      })
-      .catch(function(){
-
-        musicPlaying = false;
-
-      });
-
-  },500);
-
-}
-
-function toggleMusic(){
-
-  if(musicPlaying){
-
-    music.pause();
-    musicPlaying = false;
-    musicButton.innerText = "♪";
-
-  }else{
+  if(!playing){
 
     music.play()
       .then(function(){
 
-        musicPlaying = true;
-        musicButton.innerText = "❚❚";
+        playing = true;
+        musicButton.textContent = "Ⅱ";
 
       })
       .catch(function(){
@@ -783,46 +1023,20 @@ function toggleMusic(){
 
       });
 
+  }else{
+
+    music.pause();
+
+    playing = false;
+
+    musicButton.textContent = "♪";
+
   }
 
-}
+});
 
 
-/* RSVP */
-
-function kirimRSVP(event){
-
-  event.preventDefault();
-
-  const nama =
-    document.getElementById("namaTamu").value;
-
-  const kehadiran =
-    document.getElementById("kehadiran").value;
-
-  const nomorWhatsApp =
-    "6285141730746";
-
-  const pesan =
-    "Halo Febri & amala,%0A%0A" +
-    "Saya " + encodeURIComponent(nama) +
-    " ingin mengonfirmasi bahwa saya " +
-    encodeURIComponent(kehadiran) +
-    " pada acara pernikahan.%0A%0A" +
-    "Terima kasih.";
-
-  const url =
-    "https://wa.me/" +
-    nomorWhatsApp +
-    "?text=" +
-    pesan;
-
-  window.open(url,"_blank");
-
-}
-
-
-/* ANIMATION */
+/* ================= REVEAL ================= */
 
 const observer =
   new IntersectionObserver(
@@ -831,16 +1045,19 @@ const observer =
       entries.forEach(function(entry){
 
         if(entry.isIntersecting){
+
           entry.target.classList.add("show");
+
         }
 
       });
 
     },
     {
-      threshold:0.15
+      threshold:.12
     }
   );
+
 
 document
   .querySelectorAll(".reveal")
