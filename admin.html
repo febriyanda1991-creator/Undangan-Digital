@@ -4,3 +4,953 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Undangan Digital</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  padding:20px;
+  font-family:Arial,sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+}
+
+h1{
+  text-align:center;
+  color:#d4af37;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#aaa;
+  margin-bottom:25px;
+}
+
+.card{
+  background:#151515;
+  border:1px solid #333;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.card h2{
+  color:#d4af37;
+  font-size:20px;
+  margin-top:0;
+}
+
+label{
+  display:block;
+  margin-top:15px;
+  margin-bottom:6px;
+  color:#ddd;
+  font-weight:bold;
+}
+
+input,
+textarea{
+  width:100%;
+  padding:13px;
+  border-radius:8px;
+  border:1px solid #444;
+  background:#0d0d0d;
+  color:#fff;
+  font-size:15px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#d4af37;
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:14px;
+  margin-top:12px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn-save{
+  background:#d4af37;
+  color:#000;
+}
+
+.btn-link{
+  background:#fff;
+  color:#000;
+}
+
+.btn-copy{
+  background:#333;
+  color:#fff;
+}
+
+.btn-open{
+  background:#1b8f4d;
+  color:#fff;
+}
+
+#hasilLink{
+  margin-top:15px;
+  padding:12px;
+  background:#080808;
+  border:1px solid #333;
+  border-radius:8px;
+  word-break:break-all;
+  color:#d4af37;
+  min-height:45px;
+}
+
+.success{
+  display:none;
+  padding:12px;
+  margin-top:15px;
+  background:#123d27;
+  border:1px solid #1b8f4d;
+  border-radius:8px;
+  color:#fff;
+}
+
+.info{
+  font-size:13px;
+  color:#999;
+  margin-top:6px;
+  line-height:1.5;
+}
+
+hr{
+  border:0;
+  border-top:1px solid #333;
+  margin:25px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ADMIN UNDANGAN DIGITAL</h1>
+<div class="subtitle">
+Kelola data pelanggan & buat link undangan unik
+</div>
+
+<div class="card">
+
+<h2>Identitas Pelanggan</h2>
+
+<label>ID Pelanggan</label>
+<input
+  type="text"
+  id="idPelanggan"
+  placeholder="contoh: andi-siti"
+>
+
+<div class="info">
+Gunakan ID berbeda untuk setiap pelanggan.
+Contoh: andi-siti, budi-sari, rian-putri
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Data Mempelai</h2>
+
+<label>Nama Pria</label>
+<input
+  type="text"
+  id="pria"
+  placeholder="Nama mempelai pria"
+>
+
+<label>Nama Wanita</label>
+<input
+  type="text"
+  id="wanita"
+  placeholder="Nama mempelai wanita"
+>
+
+<label>Orang Tua Pria</label>
+<input
+  type="text"
+  id="orangTuaPria"
+  placeholder="Putra dari Bapak ... & Ibu ..."
+>
+
+<label>Orang Tua Wanita</label>
+<input
+  type="text"
+  id="orangTuaWanita"
+  placeholder="Putri dari Bapak ... & Ibu ..."
+>
+
+</div>
+
+
+<div class="card">
+
+<h2>Acara</h2>
+
+<label>Tanggal</label>
+<input
+  type="date"
+  id="tanggal"
+>
+
+<label>Jam</label>
+<input
+  type="text"
+  id="jam"
+  placeholder="09.00 WIB – Selesai"
+>
+
+<label>Lokasi</label>
+<input
+  type="text"
+  id="lokasi"
+  placeholder="Gedung / Rumah / Hotel"
+>
+
+<label>Alamat</label>
+<textarea
+  id="alamat"
+  placeholder="Alamat lengkap lokasi acara"
+></textarea>
+
+<label>Link Google Maps</label>
+<input
+  type="text"
+  id="maps"
+  placeholder="https://maps.google.com/..."
+>
+
+</div>
+
+
+<div class="card">
+
+<h2>Kontak & Rekening</h2>
+
+<label>WhatsApp</label>
+<input
+  type="text"
+  id="whatsapp"
+  placeholder="628xxxxxxxxxx"
+>
+
+<div class="info">
+Gunakan format 628..., tanpa tanda + atau 0 di depan.
+</div>
+
+<label>Nama Bank</label>
+<input
+  type="text"
+  id="bank"
+  placeholder="BRI / BCA / Mandiri"
+>
+
+<label>Nomor Rekening</label>
+<input
+  type="text"
+  id="rekening"
+  placeholder="Nomor rekening"
+>
+
+<label>Nama Pemilik Rekening</label>
+<input
+  type="text"
+  id="pemilikRekening"
+  placeholder="Nama pemilik rekening"
+>
+
+</div>
+
+
+<div class="card">
+
+<h2>Foto</h2>
+
+<label>Foto Cover</label>
+<input
+  type="text"
+  id="fotoCover"
+  placeholder="IMG_7063.jpeg"
+>
+
+<label>Foto Pria</label>
+<input
+  type="text"
+  id="fotoPria"
+  placeholder="foto-pria.jpeg"
+>
+
+<label>Foto Wanita</label>
+<input
+  type="text"
+  id="fotoWanita"
+  placeholder="foto-wanita.jpeg"
+>
+
+<label>Foto Gallery 1</label>
+<input
+  type="text"
+  id="foto1"
+  placeholder="foto1.jpeg"
+>
+
+<label>Foto Gallery 2</label>
+<input
+  type="text"
+  id="foto2"
+  placeholder="foto2.jpeg"
+>
+
+<label>Foto Gallery 3</label>
+<input
+  type="text"
+  id="foto3"
+  placeholder="foto3.jpeg"
+>
+
+<label>Foto Gallery 4</label>
+<input
+  type="text"
+  id="foto4"
+  placeholder="foto4.jpeg"
+>
+
+<div class="info">
+Nama file harus sama persis dengan nama file foto yang ada di GitHub.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Musik & Pesan</h2>
+
+<label>File Musik</label>
+<input
+  type="text"
+  id="musik"
+  placeholder="musik.mp3"
+>
+
+<label>Pesan</label>
+<textarea
+  id="pesan"
+  placeholder="Tuliskan pesan untuk tamu..."
+></textarea>
+
+</div>
+
+
+<div class="card">
+
+<h2>Simpan & Buat Link</h2>
+
+<button
+  class="btn-save"
+  onclick="simpanData()"
+>
+SIMPAN DATA PELANGGAN
+</button>
+
+<button
+  class="btn-link"
+  onclick="buatLinkUndangan()"
+>
+BUAT LINK UNDANGAN
+</button>
+
+<button
+  class="btn-copy"
+  onclick="salinLink()"
+>
+SALIN LINK
+</button>
+
+<button
+  class="btn-open"
+  onclick="bukaUndangan()"
+>
+BUKA UNDANGAN
+</button>
+
+<div id="hasilLink"></div>
+
+<div
+  id="pesanSukses"
+  class="success"
+></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const KEY_SEMUA = "SEMUA_UNDANGAN";
+const KEY_DATA = "DATA_UNDANGAN";
+
+let linkTerakhir = "";
+
+
+/* =========================
+   AMBIL DATA FORM
+========================= */
+
+function ambilData(){
+
+  const id = document
+    .getElementById("idPelanggan")
+    .value
+    .trim();
+
+  const pria = document
+    .getElementById("pria")
+    .value
+    .trim();
+
+  const wanita = document
+    .getElementById("wanita")
+    .value
+    .trim();
+
+  const tanggal = document
+    .getElementById("tanggal")
+    .value;
+
+  const jam = document
+    .getElementById("jam")
+    .value
+    .trim();
+
+  const lokasi = document
+    .getElementById("lokasi")
+    .value
+    .trim();
+
+  const alamat = document
+    .getElementById("alamat")
+    .value
+    .trim();
+
+  const maps = document
+    .getElementById("maps")
+    .value
+    .trim();
+
+  const orangTuaPria = document
+    .getElementById("orangTuaPria")
+    .value
+    .trim();
+
+  const orangTuaWanita = document
+    .getElementById("orangTuaWanita")
+    .value
+    .trim();
+
+  const whatsapp = document
+    .getElementById("whatsapp")
+    .value
+    .trim();
+
+  const bank = document
+    .getElementById("bank")
+    .value
+    .trim();
+
+  const rekening = document
+    .getElementById("rekening")
+    .value
+    .trim();
+
+  const pemilikRekening = document
+    .getElementById("pemilikRekening")
+    .value
+    .trim();
+
+  const fotoCover = document
+    .getElementById("fotoCover")
+    .value
+    .trim();
+
+  const fotoPria = document
+    .getElementById("fotoPria")
+    .value
+    .trim();
+
+  const fotoWanita = document
+    .getElementById("fotoWanita")
+    .value
+    .trim();
+
+  const foto1 = document
+    .getElementById("foto1")
+    .value
+    .trim();
+
+  const foto2 = document
+    .getElementById("foto2")
+    .value
+    .trim();
+
+  const foto3 = document
+    .getElementById("foto3")
+    .value
+    .trim();
+
+  const foto4 = document
+    .getElementById("foto4")
+    .value
+    .trim();
+
+  const musik = document
+    .getElementById("musik")
+    .value
+    .trim();
+
+  const pesan = document
+    .getElementById("pesan")
+    .value
+    .trim();
+
+
+  return {
+
+    idPelanggan: id,
+
+    pria: pria,
+    wanita: wanita,
+
+    tanggal: tanggal,
+    tanggalISO: tanggal,
+
+    jam: jam,
+
+    lokasi: lokasi,
+    alamat: alamat,
+    maps: maps,
+
+    orangTuaPria: orangTuaPria,
+    orangTuaWanita: orangTuaWanita,
+
+    whatsapp: whatsapp,
+
+    bank: bank,
+    rekening: rekening,
+    pemilikRekening: pemilikRekening,
+
+    fotoCover: fotoCover,
+    fotoPria: fotoPria,
+    fotoWanita: fotoWanita,
+
+    foto1: foto1,
+    foto2: foto2,
+    foto3: foto3,
+    foto4: foto4,
+
+    musik: musik,
+
+    pesan: pesan
+
+  };
+
+}
+
+
+/* =========================
+   ISI FORM
+========================= */
+
+function isiForm(data){
+
+  if(!data) return;
+
+  document.getElementById("idPelanggan").value =
+    data.idPelanggan || "";
+
+  document.getElementById("pria").value =
+    data.pria || "";
+
+  document.getElementById("wanita").value =
+    data.wanita || "";
+
+  document.getElementById("tanggal").value =
+    data.tanggalISO || data.tanggal || "";
+
+  document.getElementById("jam").value =
+    data.jam || "";
+
+  document.getElementById("lokasi").value =
+    data.lokasi || "";
+
+  document.getElementById("alamat").value =
+    data.alamat || "";
+
+  document.getElementById("maps").value =
+    data.maps || "";
+
+  document.getElementById("orangTuaPria").value =
+    data.orangTuaPria || "";
+
+  document.getElementById("orangTuaWanita").value =
+    data.orangTuaWanita || "";
+
+  document.getElementById("whatsapp").value =
+    data.whatsapp || "";
+
+  document.getElementById("bank").value =
+    data.bank || "";
+
+  document.getElementById("rekening").value =
+    data.rekening || "";
+
+  document.getElementById("pemilikRekening").value =
+    data.pemilikRekening || "";
+
+  document.getElementById("fotoCover").value =
+    data.fotoCover || "";
+
+  document.getElementById("fotoPria").value =
+    data.fotoPria || "";
+
+  document.getElementById("fotoWanita").value =
+    data.fotoWanita || "";
+
+  document.getElementById("foto1").value =
+    data.foto1 || "";
+
+  document.getElementById("foto2").value =
+    data.foto2 || "";
+
+  document.getElementById("foto3").value =
+    data.foto3 || "";
+
+  document.getElementById("foto4").value =
+    data.foto4 || "";
+
+  document.getElementById("musik").value =
+    data.musik || "";
+
+  document.getElementById("pesan").value =
+    data.pesan || "";
+
+}
+
+
+/* =========================
+   SIMPAN DATA
+========================= */
+
+function simpanData(){
+
+  const data = ambilData();
+
+  if(!data.idPelanggan){
+
+    alert("Isi ID Pelanggan terlebih dahulu.");
+
+    return;
+  }
+
+  if(!data.pria || !data.wanita){
+
+    alert("Nama pria dan wanita wajib diisi.");
+
+    return;
+  }
+
+
+  let semua = {};
+
+  try{
+
+    semua = JSON.parse(
+      localStorage.getItem(KEY_SEMUA)
+    ) || {};
+
+  }catch(e){
+
+    semua = {};
+
+  }
+
+
+  semua[data.idPelanggan] = data;
+
+
+  localStorage.setItem(
+    KEY_SEMUA,
+    JSON.stringify(semua)
+  );
+
+
+  localStorage.setItem(
+    KEY_DATA,
+    JSON.stringify(data)
+  );
+
+
+  tampilPesan(
+    "Data pelanggan berhasil disimpan."
+  );
+
+}
+
+
+/* =========================
+   BUAT LINK
+========================= */
+
+function buatLinkUndangan(){
+
+  const data = ambilData();
+
+
+  if(!data.idPelanggan){
+
+    alert("Isi ID Pelanggan terlebih dahulu.");
+
+    return;
+  }
+
+
+  if(!data.pria || !data.wanita){
+
+    alert("Isi nama kedua mempelai terlebih dahulu.");
+
+    return;
+  }
+
+
+  /* Simpan dulu */
+
+  let semua = {};
+
+  try{
+
+    semua = JSON.parse(
+      localStorage.getItem(KEY_SEMUA)
+    ) || {};
+
+  }catch(e){
+
+    semua = {};
+
+  }
+
+
+  semua[data.idPelanggan] = data;
+
+
+  localStorage.setItem(
+    KEY_SEMUA,
+    JSON.stringify(semua)
+  );
+
+
+  localStorage.setItem(
+    KEY_DATA,
+    JSON.stringify(data)
+  );
+
+
+  /*
+     LINK BERISI DATA SENDIRI
+
+     Jadi pelanggan A tidak akan
+     mengambil data pelanggan B.
+  */
+
+  const baseURL =
+    window.location.origin +
+    window.location.pathname
+      .replace("admin.html","");
+
+
+  linkTerakhir =
+    baseURL +
+    "?id=" +
+    encodeURIComponent(data.idPelanggan) +
+    "#data=" +
+    encodeURIComponent(
+      JSON.stringify(data)
+    );
+
+
+  document.getElementById("hasilLink")
+    .textContent = linkTerakhir;
+
+
+  tampilPesan(
+    "Link undangan berhasil dibuat."
+  );
+
+}
+
+
+/* =========================
+   SALIN LINK
+========================= */
+
+async function salinLink(){
+
+  if(!linkTerakhir){
+
+    alert(
+      "Buat link undangan terlebih dahulu."
+    );
+
+    return;
+  }
+
+
+  try{
+
+    await navigator.clipboard.writeText(
+      linkTerakhir
+    );
+
+    tampilPesan(
+      "Link berhasil disalin."
+    );
+
+  }catch(e){
+
+    /*
+       Fallback untuk browser HP
+    */
+
+    const temp =
+      document.createElement("textarea");
+
+    temp.value = linkTerakhir;
+
+    document.body.appendChild(temp);
+
+    temp.select();
+
+    document.execCommand("copy");
+
+    document.body.removeChild(temp);
+
+    tampilPesan(
+      "Link berhasil disalin."
+    );
+
+  }
+
+}
+
+
+/* =========================
+   BUKA UNDANGAN
+========================= */
+
+function bukaUndangan(){
+
+  if(!linkTerakhir){
+
+    buatLinkUndangan();
+
+  }
+
+
+  if(linkTerakhir){
+
+    window.open(
+      linkTerakhir,
+      "_blank"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   PESAN
+========================= */
+
+function tampilPesan(teks){
+
+  const el =
+    document.getElementById("pesanSukses");
+
+  el.textContent = teks;
+
+  el.style.display = "block";
+
+  setTimeout(function(){
+
+    el.style.display = "none";
+
+  },4000);
+
+}
+
+
+/* =========================
+   LOAD DATA TERAKHIR
+========================= */
+
+window.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    let data = null;
+
+
+    try{
+
+      data = JSON.parse(
+        localStorage.getItem(KEY_DATA)
+      );
+
+    }catch(e){
+
+      data = null;
+
+    }
+
+
+    if(data){
+
+      isiForm(data);
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
